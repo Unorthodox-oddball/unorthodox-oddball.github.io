@@ -4,6 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="Stylesheet.css">
+	  <style>
+      .music-player {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 300px;
+        height: 300px;
+        background-color: #ccc;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .music-player p {
+        margin: 0;
+      }
+    </style>
   <title>Ducunt volentem fata, nolentem trahunt</title>
 </head>
 <body>
@@ -74,6 +89,22 @@ document.write(obfuscate("Hello World!"));
     });
   </script>
   <a href="post1.html" class="btn">Go to Post 1</a>
+	
+    <div class="music-player" onclick="playMusic()">
+      <p>Mémentomo</p>
+      <p>Mémentote homineme</p>
+      <p>Response postte</p>
+      <p>hominemte memento</p>
+    </div>
+    <audio id="music" loop>
+      <source src="Hong Nan-pa (composition and performance)-Sorrow's_Joseon-Columbia Records.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+      function playMusic() {
+        var music = document.getElementById("music");
+        music.play();
+      }
+    </script>
 <footer>
   <p></p>
   <div id="copyright">&copy; 2023 Unorthodox-oddball.github.io</div>
