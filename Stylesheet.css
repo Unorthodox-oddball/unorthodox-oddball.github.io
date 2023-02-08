@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+nav {
+    background-color: #fff;
+    padding: 20px;
+    text-align: right;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    display: inline-block;
+}
+
+nav li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+}
+
+section {
+    padding: 20px;
+}
+
+.banner {
+    background-image: url(banner.jpg);
+    background-size: cover;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner h2 {
+    font-size: 48px;
+    color: #fff;
+    margin: 0;
+}
+
+.services {
+    background-color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.services .service {
+    width: calc(33.33% - 20px);
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 40px;
+}
+
+.services .service h3 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.services .service p {
+    font-size: 14px;
+    margin: 20px 0;
+}
+
+@font-face {
+  font-family: "TravelNovember";
+  src: url(TravelNovember-axmzg.ttf) format("truetype");
+}
+
+body {
+  font-family: "TravelNovember", sans-serif;
+}
+
+
+@media (max-width: 768px) {
+    header {
+        text-align: center;
+    }
+
+    nav {
+        text-align: center;
+    }
+
+    nav li {
+        display: block;
+        margin-left: 0;
+        margin-bottom: 20px;
+    }
+
+    .services {
+        flex-wrap: wrap;
+    }
+
+    .services .service {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+@media screen and (max-width: 600px) {
+  button, img {
+    width: 100%;
+    height: auto;
+  }
+}
+/* Footer */
+footer {
+  font-size: 16px;
+  margin: 20px 0;
+  padding: 20px;
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+}
+
+@media (max-width: 767px) {
+  footer {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+/* Header */
+header {
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+}
+
+@media (max-width: 767px) {
+  header {
+    padding: 10px;
+  }
+}
+
+/* Top Navigation */
+nav ul {
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  background-color: #333;
+}
+
+@media (max-width: 767px) {
+  nav ul {
+    font-size: 16px;
+  }
+}
+
+/* Layout */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 10px;
+  }
+}
+
+/* Background Image */
+body {
+  background-image: url(bg.jpg);
+  background-size: cover;
+}
+
+@media (max-width: 767px) {
+  body {
+    background-size: contain;
+  }
+}
+
+body {
+  font-size: 16px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+@media screen and (min-width: 480px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    font-size: 20px;
+  }
+}
+footer p {
+  margin-bottom: 1.5em;
+}
+
+footer p::before {
+  content: "Memento mori, Memento te hominem esse, Respice post te, hominem te esse memento";
+  display: block;
+  font-size: 0.8em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+#copyright {
+  font-size: 0.8em;
+  margin-top: 1em;
+  text-align: center;
+  position: relative;
+  content: "Copyright 2023 - Unorthodox-oddball.github.io";
+  color: gray;
+}

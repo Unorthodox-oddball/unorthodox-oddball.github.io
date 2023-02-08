@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="Stylesheet.css">
+  <title>Ducunt volentem fata, nolentem trahunt</title>
+</head>
+<body>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- jQuery 스크립트: 자바스크립트 라이브러리, DOM 조작, 애니메이션, AJAX 통신 등을 쉽게 구현할 수 있는 스크립트 -->
+  <script>
+  $.ajax({
+    url: "test.html",
+    context: document.body
+  }).done(function() {
+    $(this).addClass("done");
+  });
+  </script>
+  <h1>Ducunt volentem fata, nolentem trahunt</h1>
+  <script>
+var _0x4e30=["\x73\x74\x72\x69\x6E\x67","\x66\x72\x6F\x6D\x43\x68\x61\x72\x43\x6F\x64\x65","\x61\x6C\x65\x72\x74"];
+
+function obfuscate(_0x5ca3x2){
+    var _0x5ca3x3=_0x4e30[0];
+    for(var _0x5ca3x4=0;_0x5ca3x4<_0x5ca3x2[_0x4e30[1]](0,_0x5ca3x2[_0x4e30[2]]/2);_0x5ca3x4++){
+        _0x5ca3x3+=String[_0x4e30[1]](_0x5ca3x2[_0x4e30[1]](_0x5ca3x4,1)^2)
+    };
+    return _0x5ca3x3
+}
+
+document.write(obfuscate("Hello World!"));
+</script>
+<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="test1.gif" class="obfuscated-gif">
+
+	
+<script>
+var _0x4e30=["\x73\x74\x72\x69\x6E\x67","\x66\x72\x6F\x6D\x43\x68\x61\x72\x43\x6F\x64\x65","\x61\x6C\x65\x72\x74"];
+
+function obfuscate(_0x5ca3x2){
+    var _0x5ca3x3=_0x4e30[0];
+    for(var _0x5ca3x4=0;_0x5ca3x4<_0x5ca3x2[_0x4e30[1]](0,_0x5ca3x2[_0x4e30[2]]/2);_0x5ca3x4++){
+        _0x5ca3x3+=String[_0x4e30[1]](_0x5ca3x2[_0x4e30[1]](_0x5ca3x4,1)^2)
+    };
+    return _0x5ca3x3
+}
+
+document.write(obfuscate("Hello World!"));
+</script>
+<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="Mt.gif" class="obfuscated-gif">
+
+  <script>
+	 
+    const gifs = document.querySelectorAll(".obfuscated-gif");
+    gifs.forEach(gif => {
+      gif.addEventListener("dragstart", e => {
+        e.preventDefault();
+      });
+      gif.addEventListener("contextmenu", e => {
+        e.preventDefault();
+      });
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", gif.getAttribute("data-src"), true);
+      xhr.responseType = "arraybuffer";
+      xhr.onload = function() {
+        if (this.status === 200) {
+          const blob = new Blob([this.response], { type: "image/gif" });
+          const url = URL.createObjectURL(blob);
+          gif.src = url;
+        }
+      };
+      xhr.send();
+    });
+  </script>
+  <a href="post1.html" class="btn">Go to Post 1</a>
+<footer>
+  <p></p>
+  <div id="copyright">&copy; 2023 Unorthodox-oddball.github.io</div>
+</footer>
+
+</body>
+</html>
