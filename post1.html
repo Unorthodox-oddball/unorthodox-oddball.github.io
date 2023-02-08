@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <style>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
       .container {
         display: flex;
       }
@@ -14,9 +16,91 @@
         padding: 20px;
       }
     </style>
-  </head>
-  <body>
-    <div class="container">
+  <link rel="stylesheet" type="text/css" href="Stylesheet.css">
+	  <style>
+      .music-player {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 120px;
+        height: 120px;
+        background-color: #ccc;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .music-player p {
+        margin: 0;
+      }
+    </style>
+  <title>Ducunt volentem fata, nolentem trahunt</title>
+</head>
+<body>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+  $.ajax({
+    url: "test.html",
+    context: document.body
+  }).done(function() {
+    $(this).addClass("done");
+  });
+  </script>
+  <h1>Ducunt volentem fata, nolentem trahunt</h1>
+  <script>
+var _0x4e30=["\x73\x74\x72\x69\x6E\x67","\x66\x72\x6F\x6D\x43\x68\x61\x72\x43\x6F\x64\x65","\x61\x6C\x65\x72\x74"];
+
+function obfuscate(_0x5ca3x2){
+    var _0x5ca3x3=_0x4e30[0];
+    for(var _0x5ca3x4=0;_0x5ca3x4<_0x5ca3x2[_0x4e30[1]](0,_0x5ca3x2[_0x4e30[2]]/2);_0x5ca3x4++){
+        _0x5ca3x3+=String[_0x4e30[1]](_0x5ca3x2[_0x4e30[1]](_0x5ca3x4,1)^2)
+    };
+    return _0x5ca3x3
+}
+
+document.write(obfuscate("Hello World!"));
+</script>
+<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="test1.gif" class="obfuscated-gif">
+
+	
+<script>
+var _0x4e30=["\x73\x74\x72\x69\x6E\x67","\x66\x72\x6F\x6D\x43\x68\x61\x72\x43\x6F\x64\x65","\x61\x6C\x65\x72\x74"];
+
+function obfuscate(_0x5ca3x2){
+    var _0x5ca3x3=_0x4e30[0];
+    for(var _0x5ca3x4=0;_0x5ca3x4<_0x5ca3x2[_0x4e30[1]](0,_0x5ca3x2[_0x4e30[2]]/2);_0x5ca3x4++){
+        _0x5ca3x3+=String[_0x4e30[1]](_0x5ca3x2[_0x4e30[1]](_0x5ca3x4,1)^2)
+    };
+    return _0x5ca3x3
+}
+
+document.write(obfuscate("Hello World!"));
+</script>
+<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="Mt.gif" class="obfuscated-gif">
+
+  <script>
+	 
+    const gifs = document.querySelectorAll(".obfuscated-gif");
+    gifs.forEach(gif => {
+      gif.addEventListener("dragstart", e => {
+        e.preventDefault();
+      });
+      gif.addEventListener("contextmenu", e => {
+        e.preventDefault();
+      });
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", gif.getAttribute("data-src"), true);
+      xhr.responseType = "arraybuffer";
+      xhr.onload = function() {
+        if (this.status === 200) {
+          const blob = new Blob([this.response], { type: "image/gif" });
+          const url = URL.createObjectURL(blob);
+          gif.src = url;
+        }
+      };
+      xhr.send();
+    });
+  </script>
+  <div class="container">
       <div class="left-section">
         <h1>Left Section</h1>
         <p>This is the content for the left section.</p>
@@ -26,5 +110,22 @@
         <p>This is the content for the right section.</p>
       </div>
     </div>
-  </body>
+  
+    <div class="music-player" onclick="playMusic()">
+      <p>Mémento mori</p>
+    </div>
+    <audio id="music" loop>
+      <source src="Hong Nan-pa (composition and performance)-Sorrow's_Joseon-Columbia Records.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+      function playMusic() {
+        var music = document.getElementById("music");
+        music.play();
+      }
+    </script>
+<footer>
+  <p></p>
+  <div id="copyright">&copy; 2023 Unorthodox-oddball.github.io</div>
+</footer>
+</body>
 </html>
