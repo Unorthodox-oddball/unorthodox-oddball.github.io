@@ -93,12 +93,12 @@ section {
 }
 
 @font-face {
-  font-family: "TravelNovember";
-  src: url(TravelNovember-axmzg.ttf) format("truetype");
+  font-family: 'dovemayo';
+  src: url('dovemayo.otf') format('opentype');
 }
 
 body {
-  font-family: "TravelNovember", sans-serif;
+  font-family: 'dovemayo', sans-serif;
 }
 
 
