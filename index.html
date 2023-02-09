@@ -4,28 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="Stylesheet.css">
-	  <style>
-      .player {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 50px;
-        width: 500px;
-        margin: 0 auto;
-      }
-      audio {
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        outline: none;
-      }
-      button {
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        outline: none;
-      }
-    </style>
   <title>Ducunt volentem fata, nolentem trahunt</title>
 </head>
 <body>
@@ -97,30 +75,38 @@ document.write(obfuscate("Hello World!"));
   </script>
   <a href="post1.html" class="btn">Go to Post 1</a>
 	
-   <div class="player">
-      <audio id="audio" controls>
-        <source src="your-mp3-file.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-      <button id="playPauseBtn">▶️</button>
+ <div class="player">
+    <div class="record">
+      <div class="label">
+        <h2>ryan johndee</h2>
+        <h3>small multiples</h3>
+      </div>
+      <div class="spindle"></div>
     </div>
-
-    <script>
-      const audio = document.querySelector("#audio");
-      const playPauseBtn = document.querySelector("#playPauseBtn");
-
-      playPauseBtn.addEventListener("click", function () {
-        if (audio.paused) {
-          audio.play();
-          playPauseBtn.textContent = "⏸️";
-        } else {
-          audio.pause();
-          playPauseBtn.textContent = "▶️";
-        }
-      });
-    </script>
+    <div class="arm-container">
+      <div class="knob weight bottom"></div>
+      <div class="arm"></div>
+      <div class="knob weight top">
+        <button class="play">
+          <div class="tooltip">click on this</div>
+        </button>
+      </div>
+    </div>
+    <div class="speaker">
+      <?php for ($i = 0; $i < 8; $i++): ?>
+        <div class="hole"></div>
+      <?php endfor; ?>
+    </div>
+    <div class="knob volume bottom">
+      <div class="down"></div>
+      <div class="up"></div>
+    </div>
+    <div class="knob volume top"></div>
+  </div>
 <footer>
-  <p></p>
+  <a href="zzzz.png">Visual inspiration</a>
+  <a href="https://on.soundcloud.com/TgQmx">See playlist</a>
+	<p></p>
   <div id="copyright">&copy; 2023 Unorthodox-oddball.github.io</div>
 </footer>
 
