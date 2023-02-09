@@ -5,16 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="Stylesheet.css">
 	 <style>
-      .player {
+      #player {
+        width: 300px;
+        height: 50px;
+        background-color: #ddd;
+        padding: 10px;
+        text-align: center;
+      }
+      #title {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+      #audio-controls {
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        margin-top: 50px;
       }
       audio {
-        width: 400px;
-        height: 50px;
-        margin-bottom: 20px;
+        width: 100%;
       }
     </style>
   <title>Ducunt volentem fata, nolentem trahunt</title>
@@ -88,22 +96,57 @@ document.write(obfuscate("Hello World!"));
   </script>
   <a href="post1.html" class="btn">Go to Post 1</a>
 	
-     <div class="player">
-      <audio controls>
-        <source src="Hong Nan-pa (composition and performance)-Sorrow's_Joseon-Columbia Records.mp3" type="audio/mpeg">
-        Your browser does not support the audio tag.
-      </audio>
-      <br><br>
-      <audio controls>
-        <source src="MTF.mp3" type="audio/mpeg">
-        Your browser does not support the audio tag.
-      </audio>
-	      <br><br>
-      <audio controls>
-        <source src="CC.mp3" type="audio/mpeg">
-        Your browser does not support the audio tag.
-      </audio>
+     <div id="player">
+      <div id="title"></div>
+      <div id="audio-controls">
+        <button id="prev">Prev</button>
+        <audio id="audio" controls></audio>
+        <button id="next">Next</button>
+      </div>
     </div>
+
+    <script>
+      const audio = document.getElementById("audio");
+      const title = document.getElementById("title");
+      const songs = [
+        {
+          title: "Hong Nan-pa (composition and performance)-Sorrow's_Joseon-Columbia Records",
+          src: "Hong Nan-pa (composition and performance)-Sorrow's_Joseon-Columbia Records.mp3"
+        },
+        {
+          title: "MTF",
+          src: "MTF.mp3"
+        },
+        {
+          title: "CC",
+          src: "CC.mp3"
+        }
+      ];
+      let currentSong = 0;
+
+      audio.src = songs[currentSong].src;
+      title.innerHTML = songs[currentSong].title;
+
+      document.getElementById("prev").addEventListener("click", function() {
+        currentSong--;
+        if (currentSong < 0) {
+          currentSong = songs.length - 1;
+        }
+        audio.src = songs[currentSong].src;
+        title.innerHTML = songs[currentSong].title;
+        audio.play();
+      });
+
+      document.getElementById("next").addEventListener("click", function() {
+        currentSong++;
+        if (currentSong >= songs.length) {
+          currentSong = 0;
+        }
+        audio.src = songs[currentSong].src;
+        title.innerHTML = songs[currentSong].title;
+        audio.play();
+      });
+    </script>
 <footer>
   <p></p>
   <div id="copyright">&copy; 2023 Unorthodox-oddball.github.io</div>
