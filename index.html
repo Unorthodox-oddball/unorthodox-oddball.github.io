@@ -4,19 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="Stylesheet.css">
-	  <style>
-      .music-player {
+	 <style>
+      .player {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        width: 120px;
-        height: 120px;
-        background-color: #ccc;
-        border-radius: 50%;
-        cursor: pointer;
+        margin-top: 50px;
       }
-      .music-player p {
-        margin: 0;
+      audio {
+        width: 400px;
+        height: 50px;
+        margin-bottom: 20px;
       }
     </style>
   <title>Ducunt volentem fata, nolentem trahunt</title>
@@ -90,18 +88,19 @@ document.write(obfuscate("Hello World!"));
   </script>
   <a href="post1.html" class="btn">Go to Post 1</a>
 	
-    <div class="music-player" onclick="playMusic()">
-      <p>Mémento mori</p>
+     <div class="player">
+      <audio controls>
+        <source src="your-first-song.mp3" type="audio/mpeg">
+        <source src="your-first-song.ogg" type="audio/ogg">
+        Your browser does not support the audio tag.
+      </audio>
+      <br><br>
+      <audio controls>
+        <source src="your-second-song.mp3" type="audio/mpeg">
+        <source src="your-second-song.ogg" type="audio/ogg">
+        Your browser does not support the audio tag.
+      </audio>
     </div>
-    <audio id="music" loop>
-      <source src="Hong Nan-pa (composition and performance)-Sorrow's_Joseon-Columbia Records.mp3" type="audio/mpeg">
-    </audio>
-    <script>
-      function playMusic() {
-        var music = document.getElementById("music");
-        music.play();
-      }
-    </script>
 <footer>
   <p></p>
   <div id="copyright">&copy; 2023 Unorthodox-oddball.github.io</div>
