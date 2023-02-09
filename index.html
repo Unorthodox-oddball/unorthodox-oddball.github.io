@@ -4,25 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="Stylesheet.css">
-	 <style>
-      #player {
-        width: 300px;
-        height: 50px;
-        background-color: #ddd;
-        padding: 10px;
-        text-align: center;
-      }
-      #title {
-        font-size: 16px;
-        margin-bottom: 10px;
-      }
-      #audio-controls {
+	  <style>
+      .player {
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 50px;
+        width: 500px;
+        margin: 0 auto;
       }
       audio {
-        width: 100%;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        outline: none;
+      }
+      button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        outline: none;
       }
     </style>
   <title>Ducunt volentem fata, nolentem trahunt</title>
@@ -96,55 +97,26 @@ document.write(obfuscate("Hello World!"));
   </script>
   <a href="post1.html" class="btn">Go to Post 1</a>
 	
-     <div id="player">
-      <div id="title"></div>
-      <div id="audio-controls">
-        <button id="prev">Prev</button>
-        <audio id="audio" controls></audio>
-        <button id="next">Next</button>
-      </div>
+   <div class="player">
+      <audio id="audio" controls>
+        <source src="your-mp3-file.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <button id="playPauseBtn">▶️</button>
     </div>
 
     <script>
-      const audio = document.getElementById("audio");
-      const title = document.getElementById("title");
-      const songs = [
-        {
-          title: "Hong Nan-pa (composition and performance)-Sorrow's_Joseon-Columbia Records",
-          src: "Hong Nan-pa (composition and performance)-Sorrow's_Joseon-Columbia Records.mp3"
-        },
-        {
-          title: "MTF",
-          src: "MTF.mp3"
-        },
-        {
-          title: "CC",
-          src: "CC.mp3"
-        }
-      ];
-      let currentSong = 0;
+      const audio = document.querySelector("#audio");
+      const playPauseBtn = document.querySelector("#playPauseBtn");
 
-      audio.src = songs[currentSong].src;
-      title.innerHTML = songs[currentSong].title;
-
-      document.getElementById("prev").addEventListener("click", function() {
-        currentSong--;
-        if (currentSong < 0) {
-          currentSong = songs.length - 1;
+      playPauseBtn.addEventListener("click", function () {
+        if (audio.paused) {
+          audio.play();
+          playPauseBtn.textContent = "⏸️";
+        } else {
+          audio.pause();
+          playPauseBtn.textContent = "▶️";
         }
-        audio.src = songs[currentSong].src;
-        title.innerHTML = songs[currentSong].title;
-        audio.play();
-      });
-
-      document.getElementById("next").addEventListener("click", function() {
-        currentSong++;
-        if (currentSong >= songs.length) {
-          currentSong = 0;
-        }
-        audio.src = songs[currentSong].src;
-        title.innerHTML = songs[currentSong].title;
-        audio.play();
       });
     </script>
 <footer>
