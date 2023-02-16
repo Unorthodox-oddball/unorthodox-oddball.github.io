@@ -16,7 +16,7 @@ Simply sort dirty html code.
 
 Using tkinter and BeautifulSoup. 
 
-*GUI, Format HTML bt, Open File bt
+*GUI, Format HTML bt, Open File bt*
 
 You can use not only html code but also any text file. Probably, maybe not.
 
