@@ -225,23 +225,3 @@ h1 {
     font-size: 20px;
   }
 }
-footer p {
-  margin-bottom: 1.5em;
-}
-
-footer p::before {
-  content: "Memento mori, Memento te hominem esse, Respice post te, hominem te esse memento";
-  display: block;
-  font-size: 0.8em;
-  font-weight: bold;
-  margin-bottom: 0.5em;
-}
-
-#copyright {
-  font-size: 0.8em;
-  margin-top: 1em;
-  text-align: center;
-  position: relative;
-  content: "Copyright 2023 - Unorthodox-oddball.github.io";
-  color: gray;
-}
