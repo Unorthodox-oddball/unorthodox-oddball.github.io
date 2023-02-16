@@ -11,7 +11,7 @@ Simply sort dirty html code.
 
 using tkinter and BeautifulSoup, you can use not only html code but also any text file. probably, maybe not.
 
-
+<!DOCTYPE html>
 <div>
  <footer>
   <h2 class="tagline">
@@ -60,3 +60,4 @@ using tkinter and BeautifulSoup, you can use not only html code but also any tex
     font-weight: bold;
   }
 </style>
+</html>
