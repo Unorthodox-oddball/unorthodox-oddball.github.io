@@ -5,7 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="Stylesheet.css">
   <title>Ducunt volentem fata, nolentem trahunt</title>
-</head>
+<style>
+      .container {
+        display: flex;
+      }
+      .left-section {
+        width: 50%;
+        padding: 20px;
+      }
+      .right-section {
+        width: 50%;
+        padding: 20px;
+      }
+    </style>
+
+  </head>
 <body>
   </script>
   <h1>Ducunt volentem fata, nolentem trahunt</h1>
@@ -64,7 +78,18 @@ document.write(obfuscate("Hello World!"));
       xhr.send();
     });
   </script>
-  <a href="post1.html" class="btn">Go to Post 1</a>
+
+  <div class="container">
+      <div class="left-section">
+        <h1>Left Section</h1>
+        <p>This is the content for the left section.</p>
+      </div>
+      <div class="right-section">
+        <h1>Right Section</h1>
+        <p>This is the content for the right section.</p>
+      </div>
+    </div>
+
 	
 <footer class="copyright">
     <h2 class="tagline">Memento mori, Memento te hominem esse, Respice post te, hominem te esse memento</h2>
@@ -118,3 +143,4 @@ document.write(obfuscate("Hello World!"));
 	
 </body>
 </html>
+
