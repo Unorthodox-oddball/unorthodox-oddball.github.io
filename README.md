@@ -9,6 +9,8 @@ https://unorthodox-oddball.github.io/
 # html-sorting
 Simply sort dirty html code. 
 
-using tkinter and BeautifulSoup, you can use not only html code but also any text file. probably, maybe not.
+Using tkinter and BeautifulSoup.
+
+You can use not only html code but also any text file. Probably, maybe not.
 
 [html line clear.zip](https://github.com/Unorthodox-oddball/unorthodox-oddball.github.io/files/10758689/html.line.clear.zip)
