@@ -23,31 +23,6 @@ You can use not only html code but also any text file. Probably, maybe not.
 [html line clear.zip](https://github.com/Unorthodox-oddball/unorthodox-oddball.github.io/files/10758689/html.line.clear.zip)
 
 
+>***'Created by Unorthodox-oddball'
 
-<div class="marquee">
-  <p>Created by Unorthodox-oddball</p>
-</div>
-.marquee {
-  overflow: hidden;
-  position: relative;
-}
-
-.marquee p {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  line-height: 50px; 
-  text-align: center;
-  
-  animation: marquee 15s linear infinite;
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
+<span style="color:orange; background-color:yellow; font-weight:bold">Created by Unorthodox-oddball</span>
