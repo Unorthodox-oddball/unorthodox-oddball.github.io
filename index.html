@@ -67,9 +67,11 @@ document.write(obfuscate("Hello World!"));
   <a href="post1.html" class="btn">Go to Post 1</a>
 	
 <footer class="copyright">
-    <strong>Memento mori, Memento te hominem esse, Respice post te, hominem te esse memento</strong><br>
-    &copy; <span class="copyright-year"></span> Unorthodox-oddball - All Rights Reserved.<br>
-    Last Updated: <span class="last-updated"></span>
+    <h2 class="tagline">Memento mori, Memento te hominem esse, Respice post te, hominem te esse memento</h2>
+    <div class="copyright-info">
+        &copy; <span class="copyright-year"></span> Unorthodox-oddball - All Rights Reserved.<br>
+        Last Updated: <span class="last-updated"></span>
+    </div>
 </footer>
 
 <script>
@@ -92,12 +94,21 @@ document.write(obfuscate("Hello World!"));
 <style>
     footer {
         text-align: center;
-        font-size: 14px;
         color: #555;
         margin-top: 50px;
+        padding-top: 10px;
     }
     
-    footer strong {
+    .tagline {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .copyright-info {
+        font-size: 14px;
+    }
+    
+    footer span {
         font-weight: bold;
     }
 </style>
