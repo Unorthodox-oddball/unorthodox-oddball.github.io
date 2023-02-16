@@ -65,17 +65,45 @@ document.write(obfuscate("Hello World!"));
     });
   </script>
   <a href="post1.html" class="btn">Go to Post 1</a>
-<footer>
-	<p></p>
-<div id="copyright" align="center">&copy; 2023 - 2023 Unorthodox-oddball</div>
-<script>
-(function(){
-	let cpr = document.getElementById("copyright");
-	cpr.innerHTML = "&copy; 2023 - "+new Date().getFullYear()+" Unorthodox-oddball - All Rights Reserved.";
-	cpr.innerHTML += "<br/>Last Updated : "+document.lastModified;
-})();
-</script>
+	
+<footer class="copyright">
+    <strong>Memento mori, Memento te hominem esse, Respice post te, hominem te esse memento</strong><br>
+    &copy; <span class="copyright-year"></span> Unorthodox-oddball - All Rights Reserved.<br>
+    Last Updated: <span class="last-updated"></span>
 </footer>
 
+<script>
+    const currentYear = new Date().getFullYear();
+    const startYear = 2023; // 저작권 시작 연도
+    let copyrightText = "";
+
+    if (currentYear === startYear) {
+        copyrightText = startYear;
+    } else {
+        copyrightText = startYear + " - " + currentYear;
+    }
+
+    document.querySelector(".copyright-year").textContent = copyrightText;
+
+    const lastUpdated = new Date(document.lastModified).toLocaleDateString();
+    document.querySelector(".last-updated").textContent = "Last Updated: " + lastUpdated;
+</script>
+
+<style>
+    footer {
+        text-align: center;
+        font-size: 14px;
+        color: #555;
+        margin-top: 50px;
+    }
+    
+    footer strong {
+        font-weight: bold;
+    }
+</style>
+
+	
+	
+	
 </body>
 </html>
