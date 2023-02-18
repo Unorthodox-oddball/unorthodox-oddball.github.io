@@ -4,74 +4,85 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="Stylesheet.css">
-  <title>Ducunt volentem fata, nolentem trahunt</title>
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative HTML Example with PDF Preview</title>
+    <style>
+      body {
+  font-family: "Helvetica Neue", sans-serif;
+  background: linear-gradient(to right, #0e1c3c, #b20860);
+  color: white;
+}
 
-	
-	
-	
+section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2em 0;
+}
 
+article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  height: 400px;
+  margin: 1em;
+  background-color: white;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.36, -2.59, 0.12, 4.62);
+}
+
+embed {
+  width: 100%;
+  height: 200px;
+}
+
+h2 {
+  font-size: 1.5em;
+  text-align: center;
+  margin: 1em 0;
+}
+
+p {
+  font-size: 1em;
+  text-align: justify;
+  margin: 1em;
+  flex: 1;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  border-bottom: 2px solid white;
+  transition: border-bottom-color 0.2s;
+}
+
+a:hover {
+  border-bottom-color: #f8e71c;
+}
+
+article:hover {
+  transform: scale(1.05);
+}
+
+    </style>
   </head>
-<body>
-	
-  <h1>Ducunt volentem fata, nolentem trahunt</h1>
-  <script>
-	  
-var _0x4e30=["\x73\x74\x72\x69\x6E\x67","\x66\x72\x6F\x6D\x43\x68\x61\x72\x43\x6F\x64\x65","\x61\x6C\x65\x72\x74"];
-
-function obfuscate(_0x5ca3x2){
-    var _0x5ca3x3=_0x4e30[0];
-    for(var _0x5ca3x4=0;_0x5ca3x4<_0x5ca3x2[_0x4e30[1]](0,_0x5ca3x2[_0x4e30[2]]/2);_0x5ca3x4++){
-        _0x5ca3x3+=String[_0x4e30[1]](_0x5ca3x2[_0x4e30[1]](_0x5ca3x4,1)^2)
-    };
-    return _0x5ca3x3
-}
-
-document.write(obfuscate("Hello World!"));
-</script>
-<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="test1.gif" class="obfuscated-gif">
-
-	
-<script>
-var _0x4e30=["\x73\x74\x72\x69\x6E\x67","\x66\x72\x6F\x6D\x43\x68\x61\x72\x43\x6F\x64\x65","\x61\x6C\x65\x72\x74"];
-
-function obfuscate(_0x5ca3x2){
-    var _0x5ca3x3=_0x4e30[0];
-    for(var _0x5ca3x4=0;_0x5ca3x4<_0x5ca3x2[_0x4e30[1]](0,_0x5ca3x2[_0x4e30[2]]/2);_0x5ca3x4++){
-        _0x5ca3x3+=String[_0x4e30[1]](_0x5ca3x2[_0x4e30[1]](_0x5ca3x4,1)^2)
-    };
-    return _0x5ca3x3
-}
-
-document.write(obfuscate("Hello World!"));
-</script>
-<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="test2.gif" class="obfuscated-gif">
-
-  <script>
-	 
-    const gifs = document.querySelectorAll(".obfuscated-gif");
-    gifs.forEach(gif => {
-      gif.addEventListener("dragstart", e => {
-        e.preventDefault();
-      });
-      gif.addEventListener("contextmenu", e => {
-        e.preventDefault();
-      });
-
-      const xhr = new XMLHttpRequest();
-      xhr.open("GET", gif.getAttribute("data-src"), true);
-      xhr.responseType = "arraybuffer";
-      xhr.onload = function() {
-        if (this.status === 200) {
-          const blob = new Blob([this.response], { type: "image/gif" });
-          const url = URL.createObjectURL(blob);
-          gif.src = url;
-        }
-      };
-      xhr.send();
-    });
-  </script>
-
-	<section>
+  <body>
+    <header>
+      <h1>Creative HTML Example with PDF Preview</h1>
+    </header>
+    
+    <section>
       <article>
         <embed src="example1.pdf" type="application/pdf">
         <h2>Article 1</h2>
@@ -93,6 +104,7 @@ document.write(obfuscate("Hello World!"));
         <a href="#">Read more</a>
       </article>
     </section>
+
 
 	
 <footer class="copyright">
