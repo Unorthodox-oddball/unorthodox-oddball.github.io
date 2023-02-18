@@ -28,6 +28,18 @@ document.addEventListener('keydown', event => {
 </head>
 <body>
   <h1>Testing...</h1>
+   <audio id="myAudio" loop>
+      <source src="myAudio.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script>
+      window.onscroll = function() {
+        var audio = document.getElementById("myAudio");
+        audio.play();
+        audio.loop = true;
+        window.onscroll = null; 
+      }
+    </script>
  <section>
   <article>
     <img src="test.gif" alt="Example GIF">
