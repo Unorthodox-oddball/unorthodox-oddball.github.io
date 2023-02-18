@@ -5,9 +5,8 @@
 
 body {
   font-family: 'dovemayo', sans-serif;
-  background-color: #333;
-  color: #fff;
-  margin: 0;
+  background: linear-gradient(to bottom right, #E6F1FF, #C9E6FF, #AEDBFF, #93D0FF, #78C5FF);
+  color: #444444;
 }
 
 section {
@@ -28,7 +27,7 @@ article {
   width: 300px;
   height: 400px;
   margin: 1em;
-  background-color: #222;
+  background: white;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   overflow: hidden;
@@ -46,7 +45,7 @@ h2 {
   margin: 1em 0;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #f5a623;
+  color: #1E90FF;
 }
 
 p {
@@ -57,14 +56,14 @@ p {
 }
 
 a {
-  color: #f5a623;
+  color: #1E90FF;
   text-decoration: none;
-  border-bottom: 2px solid #f5a623;
+  border-bottom: 2px solid #1E90FF;
   transition: border-bottom-color 0.2s;
 }
 
 a:hover {
-  border-bottom-color: #ea4c89;
+  border-bottom-color: #FF69B4;
 }
 
 article:hover {
@@ -72,51 +71,30 @@ article:hover {
 }
 
 footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  color: #fff;
+  color: #555;
   margin-top: 50px;
-  padding-top: 50px;
-  background-color: #222;
-  position: relative;
-  clear: both;
-  height: 200px;
+  padding-top: 10px;
 }
 
 .tagline {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 .copyright-info {
   font-size: 14px;
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
+  margin-top: 10px;
 }
 
-.footer-phrase {
-  font-size: 40px;
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+.footer-info {
+  margin-top: 10px;
+}
+
+.footer-info span {
   font-weight: bold;
-  color: #f5a623;
-}
-
-#article1 {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}
-
-#article2 {
-  position: absolute;
-  top: 20px;
-  left: 350px;
-}
-
-#article3 {
-  position: absolute;
-  top: 450px;
-  left: 20px;
 }
