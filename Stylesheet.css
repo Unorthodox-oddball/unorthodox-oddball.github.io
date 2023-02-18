@@ -62,7 +62,7 @@ p {
 
 p::-webkit-scrollbar {
   width: 3px;
-  margin-right: 3px;
+  margin-right: 10px;
 }
 
 p::-webkit-scrollbar-thumb {
