@@ -39,17 +39,7 @@ embed {
   height: 200px;
 }
 
-h1 {
-  font-size: 2em;
-  text-align: center;
-  margin: 1em 0;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #f5f5f5;
-  border-bottom: 2px solid #FF69B4;
-  padding-bottom: 5px;
-}
-
+h1,
 h2 {
   font-size: 2em;
   text-align: center;
@@ -67,6 +57,7 @@ p {
   margin: 1em;
   flex: 1;
   color: #b3b3b3;
+  overflow-y: auto;
 }
 
 a {
@@ -90,43 +81,6 @@ footer {
   color: #b3b3b3;
   margin-top: 50px;
   padding-top: 10px;
-}
-
-.tagline {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #f5f5f5;
-}
-
-.tagline:before {
-  content: "//";
-  margin-right: 5px;
-}
-
-.tagline:after {
-  content: "//";
-  margin-left: 5px;
-}
-
-a:hover:after {
-  content: " \25BA";
-}
-
-a:before {
-  content: " \25C4 ";
-}
-
-a:hover:before {
-  content: " \25C4 ";
-}
-
-.copyright {
-  font-size: 1em;
-  color: #b3b3b3;
-  margin-top: 50px;
-  text-align: center;
 }
 
 @media screen and (max-width: 768px) {
