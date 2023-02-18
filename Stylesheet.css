@@ -5,8 +5,8 @@
 
 body {
   font-family: 'dovemayo', sans-serif;
-  background: linear-gradient(to bottom right, #E6F1FF, #C9E6FF, #AEDBFF, #93D0FF, #78C5FF);
-  color: #444444;
+  background-color: #444444;
+  color: #F5F5F5;
 }
 
 section {
@@ -27,9 +27,9 @@ article {
   width: 300px;
   height: 400px;
   margin: 1em;
-  background: white;
+  background-color: #222222;
   border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
   overflow: hidden;
   transition: transform 0.2s cubic-bezier(0.36, -2.59, 0.12, 4.62);
 }
@@ -71,12 +71,8 @@ article:hover {
 }
 
 footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   text-align: center;
-  color: #555;
+  color: #F5F5F5;
   margin-top: 50px;
   padding-top: 10px;
 }
@@ -86,15 +82,19 @@ footer {
   margin-bottom: 10px;
 }
 
+.tagline span {
+  color: #1E90FF;
+}
+
+.tagline:after {
+  content: " / ";
+  color: #F5F5F5;
+}
+
 .copyright-info {
   font-size: 14px;
-  margin-top: 10px;
 }
 
-.footer-info {
-  margin-top: 10px;
-}
-
-.footer-info span {
+footer span {
   font-weight: bold;
 }
