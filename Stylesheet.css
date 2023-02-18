@@ -5,8 +5,8 @@
 
 body {
   font-family: 'dovemayo', sans-serif;
-  background-color: #121212;
-  color: #f5f5f5;
+  background-color: #c0c0c0;
+  color: #1f1f1f;
 }
 
 section {
@@ -41,14 +41,14 @@ embed {
 
 h1,
 h2 {
-  font-size: 2em;
+  font-size: 3em;
   text-align: center;
   margin: 1em 0;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #f5f5f5;
-  border-bottom: 2px solid #FF69B4;
-  padding-bottom: 5px;
+  letter-spacing: 5px;
+  color: #fff;
+  text-shadow: 2px 2px 0px #FF69B4;
+  padding: 0.2em 0.5em;
 }
 
 p {
@@ -58,22 +58,27 @@ p {
   flex: 1;
   color: #b3b3b3;
   overflow-y: auto;
+  border: 3px solid #FF69B4;
+  padding: 1em;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
 }
 
 a {
-  color: #f5f5f5;
+  color: #FF69B4;
   text-decoration: none;
-  border-bottom: 2px solid #f5f5f5;
+  border-bottom: 2px dotted #FF69B4;
   transition: border-bottom-color 0.2s;
 }
 
 a:hover {
-  border-bottom-color: #FF69B4;
+  border-bottom-color: #1f1f1f;
+  text-shadow: 2px 2px 0px #FF69B4;
 }
 
 article:hover {
-  transform: rotate(2deg) scale(1.1);
-  box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.2);
+  transform: rotate(5deg) scale(1.2);
+  box-shadow: 0px 20px 40px rgba(255, 255, 255, 0.3);
 }
 
 footer {
@@ -92,6 +97,8 @@ footer {
     height: 350px;
   }
 }
+
 article img {
   width: 100%;
+  border-radius: 10px;
 }
