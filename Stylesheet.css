@@ -5,8 +5,8 @@
 
 body {
   font-family: 'dovemayo', sans-serif;
-  background-color: #F6B352;
-  color: #121212;
+  background-color: #121212;
+  color: #f5f5f5;
 }
 
 section {
@@ -27,12 +27,11 @@ article {
   width: 300px;
   height: 400px;
   margin: 1em;
-  background-color: #8B5C43;
+  background-color: #1f1f1f;
   border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
   overflow: hidden;
-  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-  position: relative;
+  transition: transform 0.2s cubic-bezier(0.36, -2.59, 0.12, 4.62);
 }
 
 embed {
@@ -42,21 +41,14 @@ embed {
 
 h1,
 h2 {
-  font-size: 4em;
+  font-size: 2em;
   text-align: center;
-  margin: 0;
+  margin: 1em 0;
   text-transform: uppercase;
-  letter-spacing: 4px;
-  color: #fff;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  mix-blend-mode: difference;
-}
-
-h1 {
-  font-size: 7em;
+  letter-spacing: 2px;
+  color: #f5f5f5;
+  border-bottom: 2px solid #FF69B4;
+  padding-bottom: 5px;
 }
 
 p {
@@ -64,39 +56,29 @@ p {
   text-align: justify;
   margin: 1em;
   flex: 1;
-  color: #fff;
+  color: #b3b3b3;
   overflow-y: auto;
-  line-height: 1.5;
-  background-color: #E5B767;
-  padding: 20px;
-  position: relative;
-  z-index: 1;
 }
 
 a {
-  color: #fff;
+  color: #f5f5f5;
   text-decoration: none;
-  border-bottom: 2px solid #fff;
-  transition: border-bottom-color 0.5s ease-in-out;
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  mix-blend-mode: difference;
-  z-index: 2;
+  border-bottom: 2px solid #f5f5f5;
+  transition: border-bottom-color 0.2s;
 }
 
 a:hover {
-  border-bottom-color: #8B5C43;
+  border-bottom-color: #FF69B4;
 }
 
 article:hover {
-  transform: rotate(5deg) scale(1.1);
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+  transform: rotate(2deg) scale(1.1);
+  box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.2);
 }
 
 footer {
   text-align: center;
-  color: #fff;
+  color: #b3b3b3;
   margin-top: 50px;
   padding-top: 10px;
 }
@@ -110,7 +92,6 @@ footer {
     height: 350px;
   }
 }
-
 article img {
   width: 100%;
 }
