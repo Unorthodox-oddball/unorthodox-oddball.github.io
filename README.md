@@ -4,10 +4,9 @@ Unorthodox-oddball.github.io
 
 https://unorthodox-oddball.github.io/
 
-![sym](https://user-images.githubusercontent.com/100816088/216017625-168f2682-0bc1-4e14-840d-019f492aec37.gif)
 
 
-
+![00261-2805134048](https://user-images.githubusercontent.com/100816088/219856734-c0ad33d0-4101-4383-bddb-68cae0db94c6.png)
 
 
 >***Created by Unorthodox-oddball***
