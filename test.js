@@ -44,5 +44,5 @@ if (currentYear === startYear) {
 
 document.querySelector(".copyright-year").textContent = copyrightText;
 
-const lastUpdated = new Date(document.lastModified).toLocaleDateString();
+const lastUpdated = new Date().toLocaleDateString();
 document.querySelector(".last-updated").textContent = lastUpdated;
