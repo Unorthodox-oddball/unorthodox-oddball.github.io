@@ -104,7 +104,9 @@ footer {
   margin-top: 50px;
   padding-top: 10px;
 }
-
+.tagline {
+    font-size: 18px;
+  }
 @media screen and (max-width: 768px) {
   section {
     flex-direction: column;
