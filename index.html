@@ -35,12 +35,30 @@
   </article>
 
   </section>
-  <footer class="copyright">
-    <h3 class="tagline">Memento mori, Memento te hominem esse, Respice post te, hominem te esse memento</h2>
+	
+<footer class="copyright">
+    <h2 class="tagline">Memento mori, Memento te hominem esse, Respice post te, hominem te esse memento</h2>
     <div class="copyright-info">
-      &copy; <span class="copyright-year"></span> Unorthodox-oddball - All Rights Reserved.<br>
-      Last Updated: <span class="last-updated"></span>
+        &copy; <span class="copyright-year"></span> Unorthodox-oddball - All Rights Reserved.<br>
+        Last Updated: <span class="last-updated"></span>
     </div>
-  </footer>
+</footer>
+
+<script>
+    const currentYear = new Date().getFullYear();
+    const startYear = 2023;
+    let copyrightText = "";
+
+    if (currentYear === startYear) {
+        copyrightText = startYear;
+    } else {
+        copyrightText = startYear + " - " + currentYear;
+    }
+
+    document.querySelector(".copyright-year").textContent = copyrightText;
+
+    const lastUpdated = new Date(document.lastModified).toLocaleDateString();
+    document.querySelector(".last-updated").textContent = lastUpdated;
+</script>
 </body>
 </html>
