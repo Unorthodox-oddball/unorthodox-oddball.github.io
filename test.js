@@ -30,3 +30,9 @@ document.addEventListener('click', function() {
   audio.loop = true;
   document.removeEventListener('click', arguments.callee);
 });
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Control') {
+        event.preventDefault();
+    }
+});
