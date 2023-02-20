@@ -36,3 +36,9 @@ document.addEventListener('keydown', function(event) {
         event.preventDefault();
     }
 });
+
+  function openPopup(fileName) {
+    var myWindow = window.open(fileName, "PDF Viewer", "width=800, height=600");
+    myWindow.focus();
+  }
+
