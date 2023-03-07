@@ -6,6 +6,52 @@
   <title>Testing...</title>
 <link rel="stylesheet" type="text/css" href="Stylesheet.css">
   <script src="test.js"></script>
+<script>
+function loadPDF(url) {
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', url, true);
+  xhr.responseType = 'blob';
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      const blob = new Blob([xhr.response], {type: 'application/pdf'});
+      const url = URL.createObjectURL(blob);
+      const pdfWindow = window.open(url);
+      pdfWindow.focus();
+    }
+  };
+  xhr.send();
+}
+</script>
+<style>
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: white;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+}
+
+.modal-content embed {
+  width: 100%;
+  height: 500px;
+}
+</style>
+
+
 </head>
 <body>
   <h1>Testing...</h1>
@@ -18,7 +64,8 @@
     <img src="test.gif" alt="Example GIF">
     <h2>Paradox of voting</h2>
     <p>Voter turnout reached an all-time high in the 2020 U.S. presidential election, with more than 159 million Americans voting, but the voting paradox suggests for many that the expected benefits of voting may not have exceeded costs, and it is essential to consider the broader context of democratic participation and the role of individual voters to better understand it.</p>
-    <a href="#">Read more</a>
+    <a href="#" onclick="loadPDF('example.pdf'); openModal();">Read more</a>
+
   </article>
 	 
   <article>
