@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.box, .circle, .hover-box {
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+    transition: all 0.3s ease-in-out;
+}
+
+.box {
+    background-color: #3498db;
+}
+
+.circle {
+    background-color: #e74c3c;
+    border-radius: 50%;
+}
+
+.hover-box {
+    background-color: #2ecc71;
+    line-height: 100px;
+    color: white;
+    font-weight: bold;
+}
+
+.hover-box:hover {
+    background-color: #27ae60;
+    transform: scale(1.2);
+}
