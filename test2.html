@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            overflow: hidden;
+        }
+
+        article {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 400px;
+        }
+
+        article:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: rotate(360deg);
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #555;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 80%;
+            max-width: 500px;
+            animation: slideUp 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <article>
+        <img src="test.gif" alt="Example GIF">
+        <h2>Paradox of voting</h2>
+        <p>Voter turnout reached an all-time high in the 2020 U.S. presidential election...</p>
+        <a href="#" id="openModal">Read more</a>
+    </article>
+
+    <!-- 모달 -->
+    <div class="modal" id="myModal">
+        <div class="modal-content">
+            <!-- 모달 내용 -->
+            <p>This is more content that you can display in a modal.</p>
+            <a href="#" id="closeModal">Close</a>
+        </div>
+    </div>
+
+    <script>
+        // 모달 열기
+        document.getElementById("openModal").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("myModal").style.display = "flex";
+        });
+
+        // 모달 닫기
+        document.getElementById("closeModal").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("myModal").style.display = "none";
+        });
+    </script>
+
+    <!-- Anime.js 라이브러리 추가 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+        // 애니메이션 효과 추가
+        anime({
+            targets: 'article',
+            translateY: [-50, 0],
+            opacity: [0, 1],
+            duration: 1000,
+            easing: 'easeOutExpo'
+        });
+
+        anime({
+            targets: 'img',
+            rotate: '1turn',
+            duration: 1000,
+            easing: 'easeOutExpo'
+        });
+
+        // 배경 애니메이션
+        anime({
+            targets: 'body',
+            backgroundPosition: ['0% 50%', '100% 50%'],
+            duration: 10000,
+            easing: 'linear',
+            direction: 'alternate',
+            loop: true
+        });
+    </script>
+</body>
+</html>
