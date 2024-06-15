@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Web Page</title>
+    <title>Interactive Dark Themed Web Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,23 +14,24 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, #1f1f1f 0%, #3e3e3e 100%);
+            color: #ddd;
             overflow: hidden;
         }
 
         article {
             text-align: center;
-            background: white;
+            background: #333;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             max-width: 400px;
         }
 
         article:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
         }
 
         img {
@@ -47,12 +48,12 @@
         }
 
         h2 {
-            color: #333;
+            color: #f5f5f5;
             margin-bottom: 10px;
         }
 
         p {
-            color: #555;
+            color: #bbb;
         }
 
         a {
@@ -85,13 +86,23 @@
         }
 
         .modal-content {
-            background-color: white;
+            background-color: #444;
             padding: 20px;
             border-radius: 10px;
             text-align: center;
             width: 80%;
             max-width: 500px;
             animation: slideUp 0.5s ease forwards;
+            color: #ddd;
+        }
+
+        .modal-content a {
+            background-color: #d9534f;
+            color: white;
+        }
+
+        .modal-content a:hover {
+            background-color: #c9302c;
         }
 
         @keyframes fadeIn {
@@ -108,7 +119,7 @@
 <body>
     <article>
         <img src="test.gif" alt="Example GIF">
-        <h2>Paradox of voting</h2>
+        <h2>Paradox of Voting</h2>
         <p>Voter turnout reached an all-time high in the 2020 U.S. presidential election...</p>
         <a href="#" id="openModal">Read more</a>
     </article>
@@ -163,6 +174,25 @@
             easing: 'linear',
             direction: 'alternate',
             loop: true
+        });
+
+        // 추가 상호작용
+        document.querySelector('article').addEventListener('mouseenter', function() {
+            anime({
+                targets: this,
+                scale: 1.1,
+                duration: 500,
+                easing: 'easeOutElastic'
+            });
+        });
+
+        document.querySelector('article').addEventListener('mouseleave', function() {
+            anime({
+                targets: this,
+                scale: 1,
+                duration: 500,
+                easing: 'easeOutElastic'
+            });
         });
     </script>
 </body>
