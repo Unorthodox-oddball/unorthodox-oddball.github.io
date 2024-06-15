@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
     <title>Interactive Web Page</title>
     <link rel="stylesheet" type="text/css" href="Stylesheet.css">
     <script src="test.js"></script>
@@ -24,20 +23,20 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
 
         article {
             text-align: center;
-            background: white;
+            background: #1e1e1e;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, background 0.3s ease;
         }
 
         article:hover {
             transform: scale(1.05);
+            background: #2e2e2e;
         }
 
         img {
@@ -49,12 +48,12 @@
         }
 
         h2 {
-            color: #333;
+            color: #f5f5f5;
             margin-bottom: 10px;
         }
 
         p {
-            color: #555;
+            color: #bbbbbb;
         }
 
         a {
@@ -85,7 +84,7 @@
         }
 
         .modal-content {
-            background-color: white;
+            background-color: #1e1e1e;
             padding: 20px;
             border-radius: 10px;
             text-align: left;
@@ -93,16 +92,16 @@
             max-width: 600px;
             max-height: 80%;
             overflow-y: auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
 
         .modal-content h2 {
-            color: #333;
+            color: #f5f5f5;
             margin-top: 0;
         }
 
         .modal-content p {
-            color: #555;
+            color: #bbbbbb;
             line-height: 1.6;
         }
 
@@ -121,14 +120,31 @@
             background-color: #0056b3;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .tooltip {
+            position: relative;
+            display: inline-block;
         }
 
-        @keyframes slideUp {
-            from { transform: translateY(100px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position the tooltip above the text */
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
         }
     </style>
 </head>
@@ -137,7 +153,7 @@
         <img src="test.gif" alt="Example GIF">
         <h2>Paradox of voting</h2>
         <p>Voter turnout reached an all-time high in the 2020 U.S. presidential election...</p>
-        <a href="#" id="openModal">Read more</a>
+        <a href="#" id="openModal" class="tooltip">Read more<span class="tooltiptext">Click to read more details</span></a>
     </article>
 
     <!-- 모달 -->
@@ -165,26 +181,6 @@
         document.getElementById("closeModal").addEventListener("click", function(event) {
             event.preventDefault();
             document.getElementById("myModal").style.display = "none";
-        });
-    </script>
-
-    <!-- Anime.js 라이브러리 추가 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <script>
-        // 애니메이션 효과 추가
-        anime({
-            targets: 'article',
-            translateY: [-50, 0],
-            opacity: [0, 1],
-            duration: 1000,
-            easing: 'easeOutExpo'
-        });
-
-        anime({
-            targets: 'img',
-            rotate: '1turn',
-            duration: 1000,
-            easing: 'easeOutExpo'
         });
     </script>
 </body>
