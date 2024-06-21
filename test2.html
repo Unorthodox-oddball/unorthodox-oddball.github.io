@@ -3,150 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artwork Gallery</title>
-    <link rel="stylesheet" type="text/css" href="Stylesheet.css">
-    <script src="test.js"></script>
-
+    <title>Chess Practice</title>
     <style>
-        .gallery {
+        body {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 2em;
-        }
-        .gallery-item {
-            margin: 1em;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
-            cursor: pointer;
-        }
-        .gallery-item:hover {
-            transform: scale(1.05);
-        }
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-        }
-        .gallery-item h3 {
-            margin: 0;
-            padding: 1em;
-            background-color: #fff;
-            text-align: center;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.8);
             justify-content: center;
             align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
         }
-        .modal-content {
+        #board {
+            display: grid;
+            grid-template-columns: repeat(8, 50px);
+            grid-template-rows: repeat(8, 50px);
+            gap: 0;
+            border: 2px solid #000;
+        }
+        .cell {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+        }
+        .white {
             background-color: #fff;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 600px;
-            border-radius: 8px;
-            text-align: center;
         }
-        .modal-content img {
-            width: 100%;
-            height: auto;
+        .black {
+            background-color: #777;
         }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
+        .piece {
             cursor: pointer;
         }
-        
+        .selected {
+            border: 2px solid red;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>My Artwork Gallery</h1>
-    </header>
-    <div class="gallery">
-        <div class="gallery-item" data-title="Artwork Title 1" data-description="This is the description of artwork 1.">
-            <img src="art1.jpg" alt="Artwork 1">
-            <h3>Artwork Title 1</h3>
-        </div>
-        <div class="gallery-item" data-title="Artwork Title 2" data-description="This is the description of artwork 2.">
-            <img src="art2.jpg" alt="Artwork 2">
-            <h3>Artwork Title 2</h3>
-        </div>
-        <div class="gallery-item" data-title="Artwork Title 3" data-description="This is the description of artwork 3.">
-            <img src="art3.jpg" alt="Artwork 3">
-            <h3>Artwork Title 3</h3>
-        </div>
-        <!-- 추가적인 Artwork는 동일한 형식으로 추가 -->
-    </div>
-
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <img id="modal-image" src="" alt="">
-            <h2 id="modal-title"></h2>
-            <p id="modal-description"></p>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy;</p>
-    </footer>
-
+    <div id="board"></div>
     <script>
-        // 모달 요소 가져오기
-        const modal = document.getElementById("modal");
-        const modalImage = document.getElementById("modal-image");
-        const modalTitle = document.getElementById("modal-title");
-        const modalDescription = document.getElementById("modal-description");
-        const closeModal = document.querySelector(".close");
+        const boardElement = document.getElementById('board');
+        const pieces = {
+            r: '♜', n: '♞', b: '♝', q: '♛', k: '♚', p: '♟',
+            R: '♖', N: '♘', B: '♗', Q: '♕', K: '♔', P: '♙'
+        };
 
-        // 갤러리 아이템에 클릭 이벤트 추가
-        const galleryItems = document.querySelectorAll(".gallery-item");
-        galleryItems.forEach(item => {
-            item.addEventListener("click", () => {
-                const imgSrc = item.querySelector("img").src;
-                const title = item.getAttribute("data-title");
-                const description = item.getAttribute("data-description");
+        const initialBoard = [
+            'rnbqkbnr',
+            'pppppppp',
+            '........',
+            '........',
+            '........',
+            '........',
+            'PPPPPPPP',
+            'RNBQKBNR'
+        ];
 
-                modalImage.src = imgSrc;
-                modalTitle.textContent = title;
-                modalDescription.textContent = description;
-                
-                modal.style.display = "flex";
-            });
-        });
+        let selectedPiece = null;
+        let selectedCell = null;
+        let boardState = initialBoard.map(row => row.split(''));
 
-        // 모달 닫기
-        closeModal.addEventListener("click", () => {
-            modal.style.display = "none";
-        });
+        function createBoard() {
+            for (let row = 0; row < 8; row++) {
+                for (let col = 0; col < 8; col++) {
+                    const cell = document.createElement('div');
+                    cell.classList.add('cell', (row + col) % 2 === 0 ? 'white' : 'black');
+                    cell.dataset.row = row;
+                    cell.dataset.col = col;
 
-        // 모달 외부 클릭 시 닫기
-        window.addEventListener("click", (event) => {
-            if (event.target === modal) {
-                modal.style.display = "none";
+                    const piece = boardState[row][col];
+                    if (piece !== '.') {
+                        const pieceElement = document.createElement('span');
+                        pieceElement.classList.add('piece');
+                        pieceElement.textContent = pieces[piece];
+                        cell.appendChild(pieceElement);
+                    }
+
+                    cell.addEventListener('click', () => onCellClick(cell));
+                    boardElement.appendChild(cell);
+                }
             }
-        });
+        }
+
+        function onCellClick(cell) {
+            if (selectedPiece) {
+                movePiece(cell);
+            } else {
+                selectPiece(cell);
+            }
+        }
+
+        function selectPiece(cell) {
+            const piece = cell.querySelector('.piece');
+            if (piece) {
+                selectedPiece = piece;
+                selectedCell = cell;
+                cell.classList.add('selected');
+            }
+        }
+
+        function movePiece(targetCell) {
+            const fromRow = parseInt(selectedCell.dataset.row);
+            const fromCol = parseInt(selectedCell.dataset.col);
+            const toRow = parseInt(targetCell.dataset.row);
+            const toCol = parseInt(targetCell.dataset.col);
+
+            if (isValidMove(fromRow, fromCol, toRow, toCol)) {
+                boardState[toRow][toCol] = boardState[fromRow][fromCol];
+                boardState[fromRow][fromCol] = '.';
+                targetCell.appendChild(selectedPiece);
+            }
+
+            selectedCell.classList.remove('selected');
+            selectedPiece = null;
+            selectedCell = null;
+        }
+
+        function isValidMove(fromRow, fromCol, toRow, toCol) {
+            const piece = boardState[fromRow][fromCol];
+            const target = boardState[toRow][toCol];
+            const isWhite = piece === piece.toUpperCase();
+            const isCapture = target !== '.' && (isWhite !== (target === target.toUpperCase()));
+
+            switch (piece.toLowerCase()) {
+                case 'p': return isValidPawnMove(fromRow, fromCol, toRow, toCol, isWhite, isCapture);
+                case 'r': return isValidRookMove(fromRow, fromCol, toRow, toCol);
+                case 'n': return isValidKnightMove(fromRow, fromCol, toRow, toCol);
+                case 'b': return isValidBishopMove(fromRow, fromCol, toRow, toCol);
+                case 'q': return isValidQueenMove(fromRow, fromCol, toRow, toCol);
+                case 'k': return isValidKingMove(fromRow, fromCol, toRow, toCol);
+                default: return false;
+            }
+        }
+
+        function isValidPawnMove(fromRow, fromCol, toRow, toCol, isWhite, isCapture) {
+            const direction = isWhite ? -1 : 1;
+            const startRow = isWhite ? 6 : 1;
+            if (isCapture) {
+                return Math.abs(fromCol - toCol) === 1 && toRow - fromRow === direction;
+            } else {
+                if (fromCol === toCol && boardState[toRow][toCol] === '.') {
+                    if (toRow - fromRow === direction) return true;
+                    if (fromRow === startRow && toRow - fromRow === 2 * direction) return true;
+                }
+            }
+            return false;
+        }
+
+        function isValidRookMove(fromRow, fromCol, toRow, toCol) {
+            if (fromRow !== toRow && fromCol !== toCol) return false;
+            if (fromRow === toRow) {
+                for (let col = Math.min(fromCol, toCol) + 1; col < Math.max(fromCol, toCol); col++) {
+                    if (boardState[fromRow][col] !== '.') return false;
+                }
+            } else {
+                for (let row = Math.min(fromRow, toRow) + 1; row < Math.max(fromRow, toRow); row++) {
+                    if (boardState[row][fromCol] !== '.') return false;
+                }
+            }
+            return true;
+        }
+
+        function isValidKnightMove(fromRow, fromCol, toRow, toCol) {
+            const rowDiff = Math.abs(fromRow - toRow);
+            const colDiff = Math.abs(fromCol - toCol);
+            return (rowDiff === 2 && colDiff === 1) || (rowDiff === 1 && colDiff === 2);
+        }
+
+        function isValidBishopMove(fromRow, fromCol, toRow, toCol) {
+            if (Math.abs(fromRow - toRow) !== Math.abs(fromCol - toCol)) return false;
+            const rowStep = fromRow < toRow ? 1 : -1;
+            const colStep = fromCol < toCol ? 1 : -1;
+            for (let i = 1; i < Math.abs(fromRow - toRow); i++) {
+                if (boardState[fromRow + i * rowStep][fromCol + i * colStep] !== '.') return false;
+            }
+            return true;
+        }
+
+        function isValidQueenMove(fromRow, fromCol, toRow, toCol) {
+            return isValidRookMove(fromRow, fromCol, toRow, toCol) || isValidBishopMove(fromRow, fromCol, toRow, toCol);
+        }
+
+        function isValidKingMove(fromRow, fromCol, toRow, toCol) {
+            const rowDiff = Math.abs(fromRow - toRow);
+            const colDiff = Math.abs(fromCol - toCol);
+            return rowDiff <= 1 && colDiff <= 1;
+        }
+
+        createBoard();
     </script>
 </body>
 </html>
