@@ -4,195 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chess Practice</title>
+    <link rel="stylesheet" href="https://unpkg.com/chessboardjs/dist/chessboard-1.0.0.min.css">
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-        }
         #board {
-            display: grid;
-            grid-template-columns: repeat(8, 50px);
-            grid-template-rows: repeat(8, 50px);
-            gap: 0;
-            border: 2px solid #000;
-        }
-        .cell {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 32px;
-        }
-        .white {
-            background-color: #fff;
-        }
-        .black {
-            background-color: #777;
-        }
-        .piece {
-            cursor: pointer;
-        }
-        .selected {
-            border: 2px solid red;
+            width: 400px;
         }
     </style>
 </head>
 <body>
+    <h1>Chess Practice</h1>
     <div id="board"></div>
+    <button onclick="resetGame()">Reset Game</button>
+    <script src="https://unpkg.com/chessboardjs/dist/chessboard-1.0.0.min.js"></script>
+    <script src="https://unpkg.com/chess.js/chess.js"></script>
     <script>
-        const boardElement = document.getElementById('board');
-        const pieces = {
-            r: '♜', n: '♞', b: '♝', q: '♛', k: '♚', p: '♟',
-            R: '♖', N: '♘', B: '♗', Q: '♕', K: '♔', P: '♙'
-        };
+        var board = Chessboard('board', {
+            draggable: true,
+            dropOffBoard: 'snapback',
+            position: 'start'
+        });
+        var game = new Chess();
 
-        const initialBoard = [
-            'rnbqkbnr',
-            'pppppppp',
-            '........',
-            '........',
-            '........',
-            '........',
-            'PPPPPPPP',
-            'RNBQKBNR'
-        ];
+        function onDrop(source, target) {
+            var move = game.move({
+                from: source,
+                to: target,
+                promotion: 'q' // 항상 퀸으로 승격 (체스 규칙에 따름)
+            });
 
-        let selectedPiece = null;
-        let selectedCell = null;
-        let boardState = initialBoard.map(row => row.split(''));
-
-        function createBoard() {
-            for (let row = 0; row < 8; row++) {
-                for (let col = 0; col < 8; col++) {
-                    const cell = document.createElement('div');
-                    cell.classList.add('cell', (row + col) % 2 === 0 ? 'white' : 'black');
-                    cell.dataset.row = row;
-                    cell.dataset.col = col;
-
-                    const piece = boardState[row][col];
-                    if (piece !== '.') {
-                        const pieceElement = document.createElement('span');
-                        pieceElement.classList.add('piece');
-                        pieceElement.textContent = pieces[piece];
-                        cell.appendChild(pieceElement);
-                    }
-
-                    cell.addEventListener('click', () => onCellClick(cell));
-                    boardElement.appendChild(cell);
-                }
-            }
+            if (move === null) return 'snapback'; // 유효하지 않은 움직임인 경우 스냅백
         }
 
-        function onCellClick(cell) {
-            if (selectedPiece) {
-                movePiece(cell);
-            } else {
-                selectPiece(cell);
-            }
+        function resetGame() {
+            game.reset();
+            board.position('start');
         }
 
-        function selectPiece(cell) {
-            const piece = cell.querySelector('.piece');
-            if (piece) {
-                selectedPiece = piece;
-                selectedCell = cell;
-                cell.classList.add('selected');
-            }
-        }
-
-        function movePiece(targetCell) {
-            const fromRow = parseInt(selectedCell.dataset.row);
-            const fromCol = parseInt(selectedCell.dataset.col);
-            const toRow = parseInt(targetCell.dataset.row);
-            const toCol = parseInt(targetCell.dataset.col);
-
-            if (isValidMove(fromRow, fromCol, toRow, toCol)) {
-                boardState[toRow][toCol] = boardState[fromRow][fromCol];
-                boardState[fromRow][fromCol] = '.';
-                targetCell.appendChild(selectedPiece);
-            }
-
-            selectedCell.classList.remove('selected');
-            selectedPiece = null;
-            selectedCell = null;
-        }
-
-        function isValidMove(fromRow, fromCol, toRow, toCol) {
-            const piece = boardState[fromRow][fromCol];
-            const target = boardState[toRow][toCol];
-            const isWhite = piece === piece.toUpperCase();
-            const isCapture = target !== '.' && (isWhite !== (target === target.toUpperCase()));
-
-            switch (piece.toLowerCase()) {
-                case 'p': return isValidPawnMove(fromRow, fromCol, toRow, toCol, isWhite, isCapture);
-                case 'r': return isValidRookMove(fromRow, fromCol, toRow, toCol);
-                case 'n': return isValidKnightMove(fromRow, fromCol, toRow, toCol);
-                case 'b': return isValidBishopMove(fromRow, fromCol, toRow, toCol);
-                case 'q': return isValidQueenMove(fromRow, fromCol, toRow, toCol);
-                case 'k': return isValidKingMove(fromRow, fromCol, toRow, toCol);
-                default: return false;
-            }
-        }
-
-        function isValidPawnMove(fromRow, fromCol, toRow, toCol, isWhite, isCapture) {
-            const direction = isWhite ? -1 : 1;
-            const startRow = isWhite ? 6 : 1;
-            if (isCapture) {
-                return Math.abs(fromCol - toCol) === 1 && toRow - fromRow === direction;
-            } else {
-                if (fromCol === toCol && boardState[toRow][toCol] === '.') {
-                    if (toRow - fromRow === direction) return true;
-                    if (fromRow === startRow && toRow - fromRow === 2 * direction) return true;
-                }
-            }
-            return false;
-        }
-
-        function isValidRookMove(fromRow, fromCol, toRow, toCol) {
-            if (fromRow !== toRow && fromCol !== toCol) return false;
-            if (fromRow === toRow) {
-                for (let col = Math.min(fromCol, toCol) + 1; col < Math.max(fromCol, toCol); col++) {
-                    if (boardState[fromRow][col] !== '.') return false;
-                }
-            } else {
-                for (let row = Math.min(fromRow, toRow) + 1; row < Math.max(fromRow, toRow); row++) {
-                    if (boardState[row][fromCol] !== '.') return false;
-                }
-            }
-            return true;
-        }
-
-        function isValidKnightMove(fromRow, fromCol, toRow, toCol) {
-            const rowDiff = Math.abs(fromRow - toRow);
-            const colDiff = Math.abs(fromCol - toCol);
-            return (rowDiff === 2 && colDiff === 1) || (rowDiff === 1 && colDiff === 2);
-        }
-
-        function isValidBishopMove(fromRow, fromCol, toRow, toCol) {
-            if (Math.abs(fromRow - toRow) !== Math.abs(fromCol - toCol)) return false;
-            const rowStep = fromRow < toRow ? 1 : -1;
-            const colStep = fromCol < toCol ? 1 : -1;
-            for (let i = 1; i < Math.abs(fromRow - toRow); i++) {
-                if (boardState[fromRow + i * rowStep][fromCol + i * colStep] !== '.') return false;
-            }
-            return true;
-        }
-
-        function isValidQueenMove(fromRow, fromCol, toRow, toCol) {
-            return isValidRookMove(fromRow, fromCol, toRow, toCol) || isValidBishopMove(fromRow, fromCol, toRow, toCol);
-        }
-
-        function isValidKingMove(fromRow, fromCol, toRow, toCol) {
-            const rowDiff = Math.abs(fromRow - toRow);
-            const colDiff = Math.abs(fromCol - toCol);
-            return rowDiff <= 1 && colDiff <= 1;
-        }
-
-        createBoard();
+        board.on('drop', onDrop);
     </script>
 </body>
 </html>
