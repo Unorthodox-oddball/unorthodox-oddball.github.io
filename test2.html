@@ -3,113 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chess Practice</title>
+    <title>Omok Game</title>
     <style>
         body {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
         }
-        #board {
+        #game-board {
             display: grid;
-            grid-template-columns: repeat(8, 50px);
-            grid-template-rows: repeat(8, 50px);
-            gap: 0;
-            border: 2px solid #000;
+            grid-template-columns: repeat(15, 40px);
+            grid-template-rows: repeat(15, 40px);
+            gap: 1px;
+            margin-top: 20px;
         }
         .cell {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
+            background-color: #f3f3f3;
+            border: 1px solid #ccc;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 32px;
-        }
-        .white {
-            background-color: #fff;
-        }
-        .black {
-            background-color: #777;
-        }
-        .piece {
+            font-size: 24px;
             cursor: pointer;
+        }
+        .cell.x::before {
+            content: 'X';
+            color: black;
+        }
+        .cell.o::before {
+            content: 'O';
+            color: red;
         }
     </style>
 </head>
 <body>
-    <div id="board"></div>
+    <h1>Omok Game</h1>
+    <div id="game-board"></div>
     <script>
-        const boardElement = document.getElementById('board');
-        const pieces = {
-            r: '♜', n: '♞', b: '♝', q: '♛', k: '♚', p: '♟',
-            R: '♖', N: '♘', B: '♗', Q: '♕', K: '♔', P: '♙'
-        };
-
-        const initialBoard = [
-            'rnbqkbnr',
-            'pppppppp',
-            '........',
-            '........',
-            '........',
-            '........',
-            'PPPPPPPP',
-            'RNBQKBNR'
-        ];
-
-        let selectedPiece = null;
-        let selectedCell = null;
-
-        function createBoard() {
-            for (let row = 0; row < 8; row++) {
-                for (let col = 0; col < 8; col++) {
+        document.addEventListener('DOMContentLoaded', () => {
+            const boardSize = 15;
+            let currentPlayer = 'x';
+            const board = [];
+        
+            // Initialize the game board
+            const gameBoard = document.getElementById('game-board');
+            for (let i = 0; i < boardSize; i++) {
+                board[i] = [];
+                for (let j = 0; j < boardSize; j++) {
                     const cell = document.createElement('div');
-                    cell.classList.add('cell', (row + col) % 2 === 0 ? 'white' : 'black');
-                    cell.dataset.row = row;
-                    cell.dataset.col = col;
-
-                    const piece = initialBoard[row][col];
-                    if (piece !== '.') {
-                        const pieceElement = document.createElement('span');
-                        pieceElement.classList.add('piece');
-                        pieceElement.textContent = pieces[piece];
-                        cell.appendChild(pieceElement);
-                    }
-
-                    cell.addEventListener('click', () => onCellClick(cell));
-                    boardElement.appendChild(cell);
+                    cell.classList.add('cell');
+                    cell.dataset.row = i;
+                    cell.dataset.col = j;
+                    cell.addEventListener('click', handleCellClick);
+                    gameBoard.appendChild(cell);
+                    board[i][j] = '';
                 }
             }
-        }
-
-        function onCellClick(cell) {
-            if (selectedPiece) {
-                movePiece(cell);
-            } else {
-                selectPiece(cell);
+        
+            function handleCellClick(event) {
+                const cell = event.target;
+                const row = parseInt(cell.dataset.row);
+                const col = parseInt(cell.dataset.col);
+        
+                if (board[row][col] !== '') return;
+        
+                board[row][col] = currentPlayer;
+                cell.classList.add(currentPlayer);
+        
+                if (checkWin(row, col)) {
+                    setTimeout(() => {
+                        alert(`${currentPlayer.toUpperCase()} wins!`);
+                        resetBoard();
+                    }, 100);
+                } else {
+                    currentPlayer = currentPlayer === 'x' ? 'o' : 'x';
+                }
             }
-        }
-
-        function selectPiece(cell) {
-            const piece = cell.querySelector('.piece');
-            if (piece) {
-                selectedPiece = piece;
-                selectedCell = cell;
-                cell.classList.add('selected');
+        
+            function checkWin(row, col) {
+                return checkDirection(row, col, 1, 0) || // Horizontal
+                       checkDirection(row, col, 0, 1) || // Vertical
+                       checkDirection(row, col, 1, 1) || // Diagonal /
+                       checkDirection(row, col, 1, -1);  // Diagonal \
             }
-        }
-
-        function movePiece(targetCell) {
-            if (targetCell !== selectedCell) {
-                targetCell.appendChild(selectedPiece);
+        
+            function checkDirection(row, col, deltaRow, deltaCol) {
+                let count = 1;
+                let r = row + deltaRow;
+                let c = col + deltaCol;
+                while (r >= 0 && r < boardSize && c >= 0 && c < boardSize && board[r][c] === currentPlayer) {
+                    count++;
+                    r += deltaRow;
+                    c += deltaCol;
+                }
+                r = row - deltaRow;
+                c = col - deltaCol;
+                while (r >= 0 && r < boardSize && c >= 0 && c < boardSize && board[r][c] === currentPlayer) {
+                    count++;
+                    r -= deltaRow;
+                    c -= deltaCol;
+                }
+                return count >= 5;
             }
-            selectedCell.classList.remove('selected');
-            selectedPiece = null;
-            selectedCell = null;
-        }
-
-        createBoard();
+        
+            function resetBoard() {
+                for (let i = 0; i < boardSize; i++) {
+                    for (let j = 0; j < boardSize; j++) {
+                        board[i][j] = '';
+                        const cell = document.querySelector(`.cell[data-row="${i}"][data-col="${j}"]`);
+                        cell.classList.remove('x', 'o');
+                    }
+                }
+                currentPlayer = 'x';
+            }
+        });
     </script>
 </body>
 </html>
