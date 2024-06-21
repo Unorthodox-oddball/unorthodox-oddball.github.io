@@ -3,37 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chess Game</title>
-    <link rel="stylesheet" href="https://unpkg.com/chessboardjs/dist/chessboard-1.0.0.min.css">
+    <title>Chess Practice</title>
     <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
         #board {
-            width: 400px;
+            display: grid;
+            grid-template-columns: repeat(8, 50px);
+            grid-template-rows: repeat(8, 50px);
+            gap: 0;
+            border: 2px solid #000;
+        }
+        .cell {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+        }
+        .white {
+            background-color: #fff;
+        }
+        .black {
+            background-color: #777;
+        }
+        .piece {
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <div id="board"></div>
-    <script src="https://unpkg.com/chessboardjs/dist/chessboard-1.0.0.min.js"></script>
-    <script src="https://unpkg.com/chess.js/chess.js"></script>
     <script>
-        var board = Chessboard('board', {
-            draggable: true,
-            dropOffBoard: 'snapback',
-            position: 'start'
-        });
-        var game = new Chess();
+        const boardElement = document.getElementById('board');
+        const pieces = {
+            r: '♜', n: '♞', b: '♝', q: '♛', k: '♚', p: '♟',
+            R: '♖', N: '♘', B: '♗', Q: '♕', K: '♔', P: '♙'
+        };
 
-        function onDrop(source, target) {
-            var move = game.move({
-                from: source,
-                to: target,
-                promotion: 'q' // 항상 퀸으로 승격 (체스 규칙에 따름)
-            });
+        const initialBoard = [
+            'rnbqkbnr',
+            'pppppppp',
+            '........',
+            '........',
+            '........',
+            '........',
+            'PPPPPPPP',
+            'RNBQKBNR'
+        ];
 
-            if (move === null) return 'snapback'; // 유효하지 않은 움직임인 경우 스냅백
+        let selectedPiece = null;
+        let selectedCell = null;
+
+        function createBoard() {
+            for (let row = 0; row < 8; row++) {
+                for (let col = 0; col < 8; col++) {
+                    const cell = document.createElement('div');
+                    cell.classList.add('cell', (row + col) % 2 === 0 ? 'white' : 'black');
+                    cell.dataset.row = row;
+                    cell.dataset.col = col;
+
+                    const piece = initialBoard[row][col];
+                    if (piece !== '.') {
+                        const pieceElement = document.createElement('span');
+                        pieceElement.classList.add('piece');
+                        pieceElement.textContent = pieces[piece];
+                        cell.appendChild(pieceElement);
+                    }
+
+                    cell.addEventListener('click', () => onCellClick(cell));
+                    boardElement.appendChild(cell);
+                }
+            }
         }
 
-        board.on('drop', onDrop);
+        function onCellClick(cell) {
+            if (selectedPiece) {
+                movePiece(cell);
+            } else {
+                selectPiece(cell);
+            }
+        }
+
+        function selectPiece(cell) {
+            const piece = cell.querySelector('.piece');
+            if (piece) {
+                selectedPiece = piece;
+                selectedCell = cell;
+                cell.classList.add('selected');
+            }
+        }
+
+        function movePiece(targetCell) {
+            if (targetCell !== selectedCell) {
+                targetCell.appendChild(selectedPiece);
+            }
+            selectedCell.classList.remove('selected');
+            selectedPiece = null;
+            selectedCell = null;
+        }
+
+        createBoard();
     </script>
 </body>
 </html>
