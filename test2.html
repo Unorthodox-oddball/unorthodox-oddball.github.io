@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chess Practice</title>
+    <title>Chess Game</title>
     <link rel="stylesheet" href="https://unpkg.com/chessboardjs/dist/chessboard-1.0.0.min.css">
     <style>
         #board {
@@ -12,9 +12,7 @@
     </style>
 </head>
 <body>
-    <h1>Chess Practice</h1>
     <div id="board"></div>
-    <button onclick="resetGame()">Reset Game</button>
     <script src="https://unpkg.com/chessboardjs/dist/chessboard-1.0.0.min.js"></script>
     <script src="https://unpkg.com/chess.js/chess.js"></script>
     <script>
@@ -33,11 +31,6 @@
             });
 
             if (move === null) return 'snapback'; // 유효하지 않은 움직임인 경우 스냅백
-        }
-
-        function resetGame() {
-            game.reset();
-            board.position('start');
         }
 
         board.on('drop', onDrop);
