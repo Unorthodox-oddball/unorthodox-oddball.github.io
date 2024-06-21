@@ -68,7 +68,7 @@
                 const row = parseInt(cell.dataset.row);
                 const col = parseInt(cell.dataset.col);
         
-                if (board[row][col] !== '') return;
+                if (board[row][col] !== '' || currentPlayer !== 'x') return;
         
                 board[row][col] = currentPlayer;
                 cell.classList.add(currentPlayer);
@@ -79,10 +79,100 @@
                         resetBoard();
                     }, 100);
                 } else {
-                    currentPlayer = currentPlayer === 'x' ? 'o' : 'x';
+                    currentPlayer = 'o';
+                    setTimeout(aiMove, 500);  // AI makes a move after 500ms
                 }
             }
-        
+
+            function aiMove() {
+                let bestScore = -Infinity;
+                let move = null;
+
+                for (let i = 0; i < boardSize; i++) {
+                    for (let j = 0; j < boardSize; j++) {
+                        if (board[i][j] === '') {
+                            board[i][j] = 'o';
+                            let score = minimax(board, 0, false);
+                            board[i][j] = '';
+                            if (score > bestScore) {
+                                bestScore = score;
+                                move = { row: i, col: j };
+                            }
+                        }
+                    }
+                }
+
+                if (move) {
+                    board[move.row][move.col] = currentPlayer;
+                    const cell = document.querySelector(`.cell[data-row="${move.row}"][data-col="${move.col}"]`);
+                    cell.classList.add(currentPlayer);
+
+                    if (checkWin(move.row, move.col)) {
+                        setTimeout(() => {
+                            alert(`${currentPlayer.toUpperCase()} wins!`);
+                            resetBoard();
+                        }, 100);
+                    } else {
+                        currentPlayer = 'x';
+                    }
+                }
+            }
+
+            const scores = {
+                o: 1,
+                x: -1,
+                tie: 0
+            };
+
+            function minimax(board, depth, isMaximizing) {
+                if (checkWinner('o')) {
+                    return scores['o'];
+                } else if (checkWinner('x')) {
+                    return scores['x'];
+                }
+
+                if (isMaximizing) {
+                    let bestScore = -Infinity;
+                    for (let i = 0; i < boardSize; i++) {
+                        for (let j = 0; j < boardSize; j++) {
+                            if (board[i][j] === '') {
+                                board[i][j] = 'o';
+                                let score = minimax(board, depth + 1, false);
+                                board[i][j] = '';
+                                bestScore = Math.max(score, bestScore);
+                            }
+                        }
+                    }
+                    return bestScore;
+                } else {
+                    let bestScore = Infinity;
+                    for (let i = 0; i < boardSize; i++) {
+                        for (let j = 0; j < boardSize; j++) {
+                            if (board[i][j] === '') {
+                                board[i][j] = 'x';
+                                let score = minimax(board, depth + 1, true);
+                                board[i][j] = '';
+                                bestScore = Math.min(score, bestScore);
+                            }
+                        }
+                    }
+                    return bestScore;
+                }
+            }
+
+            function checkWinner(player) {
+                for (let row = 0; row < boardSize; row++) {
+                    for (let col = 0; col < boardSize; col++) {
+                        if (board[row][col] === player) {
+                            if (checkWin(row, col, player)) {
+                                return true;
+                            }
+                        }
+                    }
+                }
+                return false;
+            }
+
             function checkWin(row, col) {
                 return checkDirection(row, col, 1, 0) || // Horizontal
                        checkDirection(row, col, 0, 1) || // Vertical
