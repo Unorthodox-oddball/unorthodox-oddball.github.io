@@ -1,234 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Web Page</title>
-    <link rel="stylesheet" type="text/css" href="Stylesheet.css">
-    <script src="test.js"></script>
-    <style>
-        @font-face {
-          font-family: 'dovemayo';
-          src: url('dovemayo.otf') format('opentype');
-        }
-        
-        body {
-            font-family: 'dovemayo', sans-serif;
-            background-color: #2c2c2c;
-            color: #e0e0e0;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="투표의 역설에 대한 개인적인 정리와 생각.">
+  <title>Paradox of Voting · Unorthodox-oddball</title>
+  <link rel="stylesheet" href="Stylesheet.css">
+  <style>
+    .article-page {
+      width: min(760px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 3rem 0 5rem;
+    }
 
-        article {
-            text-align: center;
-            background: #3b3b3b;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, background 0.3s ease;
-            opacity: 0;
-            animation: fadeInUp 1s forwards;
-        }
+    .article-page-header {
+      margin-bottom: 2rem;
+    }
 
-        article:hover {
-            transform: scale(1.05);
-            background: #4a4a4a;
-        }
+    .article-page h1 {
+      margin: 0.4rem 0 1rem;
+      font-size: clamp(2rem, 6vw, 3rem);
+    }
 
-        img {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 15px;
-        }
+    .article-page .lead {
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
 
-        h2 {
-            color: #e0e0e0;
-            margin-bottom: 10px;
-        }
+    .article-page figure {
+      margin: 2rem 0;
+    }
 
-        p {
-            color: #cccccc;
-        }
+    .article-page figure img {
+      display: block;
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
 
-        a {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
+    .article-page figcaption {
+      margin-top: 0.5rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
 
-        a:hover {
-            background-color: #0056b3;
-        }
+    .article-page p {
+      margin: 1.25rem 0;
+      color: #d7d7d7;
+    }
 
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            animation: fadeIn 0.5s forwards;
-        }
+    .article-page blockquote {
+      margin: 2rem 0;
+      padding: 1rem 1.25rem;
+      border-left: 3px solid var(--accent);
+      color: var(--muted);
+    }
 
-        .modal-content {
-            background-color: #3b3b3b;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: left;
-            width: 80%;
-            max-width: 600px;
-            max-height: 80%;
-            overflow-y: auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-content h2 {
-            color: #e0e0e0;
-            margin-top: 0;
-        }
-
-        .modal-content p {
-            color: #cccccc;
-            line-height: 1.6;
-        }
-
-        .modal-content a {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .modal-content a:hover {
-            background-color: #0056b3;
-        }
-
-        .tooltip {
-            position: relative;
-            display: inline-block;
-        }
-
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 120px;
-            background-color: #555;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px 0;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%; /* Position the tooltip above the text */
-            left: 50%;
-            margin-left: -60px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes bounceIn {
-            from, 20%, 40%, 60%, 80%, to {
-                animation-timing-function: ease-in-out;
-            }
-            0% {
-                opacity: 0;
-                transform: scale3d(0.3, 0.3, 0.3);
-            }
-            20% {
-                transform: scale3d(1.1, 1.1, 1.1);
-            }
-            40% {
-                transform: scale3d(0.9, 0.9, 0.9);
-            }
-            60% {
-                opacity: 1;
-                transform: scale3d(1.03, 1.03, 1.03);
-            }
-            80% {
-                transform: scale3d(0.97, 0.97, 0.97);
-            }
-            to {
-                opacity: 1;
-                transform: scale3d(1, 1, 1);
-            }
-        }
-    </style>
+    .back-link {
+      display: inline-block;
+      margin-top: 2rem;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
+  <main class="article-page">
+    <header class="article-page-header">
+      <p class="article-meta">ESSAY · POLITICS</p>
+      <h1>Paradox of Voting</h1>
+      <p class="lead">투표라는 행위에 들어가는 개인의 비용과 민주주의에서 한 표가 갖는 의미 사이의 긴장을 살펴봅니다.</p>
+    </header>
+
+    <figure>
+      <img src="test.gif" alt="투표의 역설을 상징하는 이미지">
+    </figure>
+
     <article>
-        <img src="test.gif" alt="Example GIF" class="tooltip">
-        <span class="tooltiptext">Example GIF Image</span>
-        <h2>Paradox of voting</h2>
-        <p>Voter turnout reached an all-time high in the 2020 U.S. presidential election...</p>
-        <a href="#" id="openModal" class="tooltip">Read more<span class="tooltiptext">Click to read more details</span></a>
+      <p>투표의 역설(Downs' Paradox)은 합리적인 개인의 관점에서 투표에 드는 비용과 기대되는 편익을 비교할 때, 투표에 참여할 유인이 충분하지 않을 수 있다는 문제를 다룹니다.</p>
+
+      <p>개인이 한 표를 행사해 선거 결과를 바꿀 확률은 매우 작습니다. 그럼에도 많은 사람은 투표에 참여합니다. 따라서 투표를 단순히 개인의 효용만으로 설명하기보다 정치적 표현, 시민적 의무, 공동체에 대한 참여와 같은 요소까지 함께 바라볼 필요가 있습니다.</p>
+
+      <blockquote>개인의 한 표가 작아 보인다는 사실과 시민의 참여가 중요하다는 사실은 서로 모순되는 것처럼 보이지만, 바로 그 긴장이 투표의 역설이 던지는 질문입니다.</blockquote>
+
+      <p>이 글은 투표의 역설을 완결된 결론으로 제시하기보다, 개인의 합리적인 선택과 집단적 민주주의가 어떻게 충돌하는지를 생각하기 위한 출발점으로 정리한 것입니다.</p>
     </article>
 
-    <!-- 모달 -->
-    <div class="modal" id="myModal">
-        <div class="modal-content">
-            <h2>More About Voting Paradox</h2>
-            <p> The Voting Paradox, also known as Downs' Paradox, has confounded scholars and policymakers for over six decades. It was first introduced by Anthony Downs in 1957, and it argues that the costs of voting often outweigh the expected benefits of reasonable and informed voters.</p>
-            <p> Recent events have brought the Voting Paradox into the spotlight. In the 2020 U.S. presidential election, voter turnout reached a record high, with over 159 million Americans casting their ballots. However, this high turnout was still only 66.7% of eligible voters, demonstrating that a significant proportion of the population chose not to vote. The reasons for this abstention may be varied, but the Voting Paradox suggests that for many, the expected benefits of voting may not have outweighed the costs. Despite this, some scholars argue that voters should vote to express their wishes, rather than to influence the election results. This view highlights the importance of political voice and the role of the individual in the democratic process. Research has shown that the act of voting can have psychological benefits, such as increased feelings of efficacy and political engagement, which can lead to increased political participation in the future.</p>
-            <p> However, others assert that the paradox challenges the value of voting as a means of democratic participation, and that it highlights the role of rational decision-making and the need to weigh the costs and benefits of individual actions in the context of broader social and political dynamics. This perspective suggests that the paradox may undermine the legitimacy of the democratic system and calls into question the value of individual action in promoting change. To gain a better understanding of the Voting Paradox and its implications, it is essential to consider the broader context of democratic participation and the role of individual voters. For example, research has shown that certain groups, such as those with lower incomes or lower levels of education, are less likely to vote. This can result in a lack of representation for these groups, and may perpetuate existing inequalities in the political system.By examining the paradox in this context, we can better understand the challenges and opportunities of democratic participation and work towards a more inclusive and effective democratic society. Encouraging greater voter turnout, particularly among marginalized communities, can help to address some of the concerns raised by the Voting Paradox and promote a more vibrant and responsive political system.</p>
-            <p> In conclusion, the Voting Paradox remains a crucial concept for scholars and policymakers alike, underscoring the intricate dynamics of democratic participation and the need to balance individual and collective action in the pursuit of a more vibrant and responsive political system. By recognizing and engaging with this paradox, we can better understand the challenges and opportunities of democratic participation and work towards a more inclusive and effective democratic society.</p>
-            <p>P.S</p>
-            <p>This content was generated from conversations with the AI and is just a way to organize it.</p>
-            <a href="#" id="closeModal">Close</a>
-        </div>
-    </div>
-
-    <script>
-        // 모달 열기
-        document.getElementById("openModal").addEventListener("click", function(event) {
-            event.preventDefault();
-            document.getElementById("myModal").style.display = "flex";
-        });
-
-        // 모달 닫기
-        document.getElementById("closeModal").addEventListener("click", function(event) {
-            event.preventDefault();
-            document.getElementById("myModal").style.display = "none";
-        });
-
-        // 페이지 로드 시 애니메이션 추가
-        window.addEventListener('load', function() {
-            document.querySelector('article').classList.add('animated');
-        });
-    </script>
+    <a class="back-link" href="index.html">← 글 목록으로 돌아가기</a>
+  </main>
 </body>
 </html>
