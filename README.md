@@ -1,13 +1,55 @@
 # Unorthodox-oddball.github.io
 
-Unorthodox-oddball.github.io
+개인 웹사이트이자 실험적인 글·작품 아카이브입니다.
 
-https://unorthodox-oddball.github.io/
+[웹사이트 방문하기](https://unorthodox-oddball.github.io/)
 
+## 프로젝트 특징
 
+- **정적 웹사이트** — 별도의 프레임워크나 서버 없이 HTML, CSS, JavaScript로 구성되어 있습니다.
+- **개인적인 글 아카이브** — 정치·사회·철학 등의 주제를 개인적인 관점에서 정리하고 탐구하는 것을 지향합니다.
+- **실험적인 웹 디자인** — 어두운 배경, 사용자 정의 글꼴, 카드형 콘텐츠와 가벼운 애니메이션을 사용합니다.
+- **멀티미디어 활용** — 이미지, GIF, 오디오를 글과 함께 배치할 수 있는 구조입니다.
+- **웹 실험의 흔적** — 초기에는 투표의 역설에 관한 글과 오목 게임 등 다양한 기능을 시험했습니다. 현재는 콘텐츠 중심의 구조로 정리하는 단계입니다.
 
-![00261-2805134048](https://github.com/Unorthodox-oddball/unorthodox-oddball.github.io/blob/main/zzzz.png?raw=true)
+## 현재 구성
 
+```text
+.
+├── index.html        # 메인 페이지
+├── test.html         # 투표의 역설에 관한 글/실험 페이지
+├── test2.html        # 오목 게임 실험 페이지
+├── Stylesheet.css    # 공통 스타일
+├── test.js            # 공통 페이지 스크립트
+├── dovemayo.otf      # 사용자 정의 글꼴
+├── *.gif / *.png     # 이미지 및 애니메이션 자료
+└── *.mp3             # 오디오 자료
+```
 
->***Created by Unorthodox-oddball***
+`test.html`, `test2.html`처럼 의미가 드러나지 않는 파일명은 초기 실험 단계의 흔적입니다. 콘텐츠가 늘어날 경우 `articles/`, `games/`, `assets/` 등의 역할별 디렉터리와 주제 중심의 파일명으로 정리하는 것이 좋습니다.
 
+## 개선 방향
+
+- 글마다 **제목·요약·본문·관련 자료**가 명확히 구분되도록 구성
+- 공통 CSS와 페이지별 스타일을 분리하고 중복 스타일 제거
+- 실험용 페이지와 실제 공개 콘텐츠를 구분
+- 이미지에 의미 있는 `alt` 텍스트를 제공하고 키보드 탐색을 지원
+- 브라우저의 우클릭·드래그·F12 같은 기본 기능을 강제로 차단하지 않기
+- 자동 재생 오디오는 사용자 제어 방식으로 변경
+- 콘텐츠가 늘어나면 일관된 글 목록 및 개별 글 URL 구조 도입
+- 사용하지 않는 GIF, 테스트 파일, 중복 코드와 오래된 예제 콘텐츠 정리
+
+## 기술 스택
+
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- GitHub Pages
+
+## 콘텐츠 및 저작권
+
+이 저장소의 글과 개인 제작물은 별도의 표시가 없는 한 저장소 소유자에게 저작권이 있습니다. 외부 자료는 각각의 원저작자와 해당 라이선스를 따릅니다.
+
+---
+
+**Created by Unorthodox-oddball**
