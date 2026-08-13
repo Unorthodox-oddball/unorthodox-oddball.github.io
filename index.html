@@ -3,61 +3,290 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Testing...</title>
+  <meta name="description" content="Unorthodox-oddball의 개인 블로그 및 멀티미디어 포트폴리오">
+  <meta name="keywords" content="블로그, 포트폴리오, 웹디자인, 멀티미디어">
+  <title>Unorthodox-oddball | Blog & Experiments</title>
   <link rel="stylesheet" type="text/css" href="Stylesheet.css">
   <script src="test.js"></script>
 </head>
 <body>
-  <h1>Testing...</h1>
+  <!-- 배경음악 -->
   <audio id="myAudio" loop>
     <source src="Hong Nan-pa (composition and performance)-Sorrow's_Joseon-Columbia Records.mp3" type="audio/mpeg">
   </audio>
-<section>
-<article>
-    <img src="test.gif" alt="Example GIF">
-    <h2>Paradox of voting</h2>
-    <p>Voter turnout reached an all-time high in the 2020 U.S. presidential election, with more than 159 million Americans voting, but the voting paradox suggests for many that the expected benefits of voting may not have exceeded costs, and it is essential to consider the broader context of democratic participation and the role of individual voters to better understand it.</p>
-    <a href="test.html">Read more</a>
 
-  </article>
-	 
-  <article>
-    <img src="00001-321918068.gif" alt="Example GIF">
-    <a href="#">Read more</a>
-  </article>
-	 
-  <article>
-    <img src="test.gif" alt="Example GIF">
-    <h2>Article 3</h2>
-    <p>This is an example article that demonstrates the power of HTML and CSS. Notice how the text is justified and the GIF is centered and resized to fit the container.</p>
-    <a href="test2.html">Read more</a>
-  </article>
+  <!-- 헤더 -->
+  <header class="main-header">
+    <h1>Unorthodox-oddball</h1>
+    <p class="subtitle">블로그 × 멀티미디어 × 실험</p>
+  </header>
 
-  </section>
-  	
-<footer class="copyright">
+  <!-- 네비게이션 탭 -->
+  <nav class="tab-navigation">
+    <button class="tab-button" onclick="switchTab('blog-tab')">📝 Blog</button>
+    <button class="tab-button" onclick="switchTab('experiments-tab')">✨ Experiments</button>
+  </nav>
+
+  <!-- ===== BLOG 탭 ===== -->
+  <div id="blog-tab" class="tab-content blog-section">
+    <section class="articles-grid">
+      <!-- Article 1: 투표의 역설 -->
+      <article class="article-card">
+        <img src="test.gif" alt="Voting Paradox Illustration">
+        <div class="article-content">
+          <h2>투표의 역설</h2>
+          <p>2020년 미국 대선에서 투표율이 사상 최고조에 달했음에도 불구하고, 투표의 역설은 개인의 합리적 선택이 집단의 이익과 충돌할 수 있음을 시사합니다.</p>
+          <a href="test.html" class="read-more">→ 자세히 읽기</a>
+        </div>
+      </article>
+
+      <!-- Article 2: 미디어와 현실 -->
+      <article class="article-card">
+        <img src="00001-321918068.gif" alt="Media and Reality">
+        <div class="article-content">
+          <h2>미디어와 현실</h2>
+          <p>디지털 시대에 우리가 소비하는 콘텐츠가 현실을 어떻게 형성하는지, 그리고 그 역할이 어떻게 변화하고 있는지 탐구합니다.</p>
+          <a href="#" class="read-more">→ 자세히 읽기</a>
+        </div>
+      </article>
+
+      <!-- Article 3: 웹 디자인의 미학 -->
+      <article class="article-card">
+        <img src="test.gif" alt="Web Design Aesthetics">
+        <div class="article-content">
+          <h2>웹 디자인의 미학</h2>
+          <p>HTML, CSS, JavaScript가 만나는 지점에서 순수한 미와 기능성이 어떻게 조화를 이루는지, 그리고 사용자 경험의 본질에 대해 살펴봅니다.</p>
+          <a href="#" class="read-more">→ 자세히 읽기</a>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <!-- ===== EXPERIMENTS 탭 ===== -->
+  <div id="experiments-tab" class="tab-content experiments-section">
+    <section class="experiment-post">
+      <!-- 새로운 블로그 글 -->
+      <article class="full-post">
+        <header class="post-header">
+          <h1>Unorthodox-oddball.github.io 새로고침</h1>
+          <h2 class="post-subtitle">블로그의 진화 - 멀티미디어와 콘텐츠의 融合</h2>
+          <div class="post-meta">
+            <span class="date">📅 2026년 8월 13일</span>
+            <span class="category">💡 웹 개발 | 포트폴리오 개선</span>
+          </div>
+        </header>
+
+        <div class="post-body">
+          <!-- 서론 -->
+          <section class="post-section">
+            <h3>🌟 들어가며</h3>
+            <p>
+              개인 포트폴리오 웹사이트를 개선하는 과정은 단순한 코드 리팩토링을 넘어 
+              <strong>사용자 경험과 창작 철학을 재정의하는 과정</strong>이다. 
+              이 글에서는 Unorthodox-oddball.github.io의 전면적인 개선 여정을 기록한다.
+            </p>
+          </section>
+
+          <!-- 문제 인식 -->
+          <section class="post-section">
+            <h3>🔍 문제 인식: 불필요한 제약</h3>
+            <div class="issue-box">
+              <p><strong>기존 코드의 문제점:</strong></p>
+              <ul>
+                <li>❌ <code>F12</code> 키 차단 - 개발자 도구 접근 제한</li>
+                <li>❌ 우클릭 차단 - 기본적인 브라우저 기능 박탈</li>
+                <li>❌ <code>Ctrl</code> 키 차단 - 복사/붙여넣기 기능 제한</li>
+                <li>❌ 드래그 차단 - 사용자 상호작용 제한</li>
+              </ul>
+              <p class="issue-summary">
+                이러한 제약들은 <strong>"보안"</strong>이라는 명목 하에 
+                사용자의 기본적인 브라우저 자유도를 침해하고 있었다.
+              </p>
+            </div>
+          </section>
+
+          <!-- 멀티미디어 블로그의 개념 -->
+          <section class="post-section">
+            <h3>🎬 멀티미디어 × 블로그의 새로운 패러다임</h3>
+            <p>
+              기존의 순수 텍스트 기반 블로그에서 벗어나, 
+              <strong>이미지, GIF, 음악, 그리고 인터랙티브 요소</strong>를 
+              블로그 콘텐츠와 자연스럽게 통합하는 방식을 모색했다.
+            </p>
+            <div class="highlight-box">
+              <p>
+                <strong>핵심 개념:</strong>
+                콘텐츠는 단순한 텍스트가 아니라, 
+                시각, 청각, 그리고 상호작용을 통해 
+                다층적인 의미를 전달하는 매체가 되어야 한다.
+              </p>
+            </div>
+          </section>
+
+          <!-- 기술적 개선사항 -->
+          <section class="post-section">
+            <h3>⚙️ 기술적 개선사항</h3>
+            
+            <div class="improvement-card">
+              <h4>1️⃣ test.js 리팩토링</h4>
+              <p><strong>제거된 코드:</strong></p>
+              <ul>
+                <li>F12 키 이벤트 리스너 제거</li>
+                <li>우클릭 방지 이벤트 제거</li>
+                <li>드래그 방지 이벤트 제거</li>
+                <li>Ctrl 키 제한 제거</li>
+              </ul>
+              <p><strong>추가된 기능:</strong></p>
+              <ul>
+                <li>✨ <code>switchTab()</code> 함수 - 탭 전환 네비게이션</li>
+                <li>✨ 동적 탭 활성화/비활성화 시스템</li>
+                <li>✨ 스타일시트 자동 로드</li>
+                <li>✨ 배경음악 자동 재생</li>
+              </ul>
+            </div>
+
+            <div class="improvement-card">
+              <h4>2️⃣ index.html 구조 개선</h4>
+              <ul>
+                <li>📑 새로운 네비게이션 탭 시스템 도입</li>
+                <li>📑 "Blog" 탭 - 기존 블로그 글들</li>
+                <li>📑 "Experiments" 탭 - 실험적 콘텐츠</li>
+                <li>📑 SEO 메타데이터 추가</li>
+                <li>📑 접근성 개선 (Semantic HTML)</li>
+              </ul>
+            </div>
+
+            <div class="improvement-card">
+              <h4>3️⃣ CSS 최적화</h4>
+              <ul>
+                <li>🎨 중괄호 중복 오류 수정 (라인 122)</li>
+                <li>🎨 탭 버튼 스타일링 추가</li>
+                <li>🎨 반응형 디자인 강화</li>
+                <li>🎨 색상 팔레트 일관성 유지</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- 현재 구조 -->
+          <section class="post-section">
+            <h3>📁 개선된 파일 구조</h3>
+            <div class="code-block">
+              <pre>unorthodox-oddball.github.io/
+├── index.html          [리팩토링] 탭 네비게이션 추가
+├── test.js             [개선] 보안 코드 제거, 탭 기능 추가
+├── Stylesheet.css      [수정] CSS 문법 오류 개선
+├── README.md           [신규] 종합 문서화
+├── test.html           [유지] 투표의 역설 상세 페이지
+├── test2.html          [유지] 오목 게임
+└── 리소스들            [유지] 이미지, 음악 파일</pre>
+            </div>
+          </section>
+
+          <!-- 철학적 배경 -->
+          <section class="post-section">
+            <h3>💭 왜 이런 변화가 필요했나?</h3>
+            <p>
+              포트폴리오는 단순한 <strong>이력서의 디지털 버전</strong>이 아니다. 
+              그것은 <strong>창작자의 사고방식, 미학, 그리고 철학을 보여주는 창</strong>이다.
+            </p>
+            <ul>
+              <li>
+                <strong>제약 제거:</strong> 사용자를 신뢰하고, 그들의 자유도를 존중하는 것이 
+                결과적으로 더 나은 사용자 경험을 만든다.
+              </li>
+              <li>
+                <strong>멀티미디어 통합:</strong> 텍스트만으로는 전할 수 없는 감정과 의도를 
+                시각과 음향으로 보완한다.
+              </li>
+              <li>
+                <strong>실험성 강조:</strong> "Experiments" 탭을 통해 
+                진행 중인 작업과 미래의 방향성을 명확히 한다.
+              </li>
+            </ul>
+          </section>
+
+          <!-- 향후 방향 -->
+          <section class="post-section">
+            <h3>🚀 향후 개발 계획</h3>
+            <div class="roadmap">
+              <div class="roadmap-item">
+                <span class="phase">Phase 1</span>
+                <p><strong>콘텐츠 확장:</strong> 더 많은 블로그 글과 카테고리 추가</p>
+              </div>
+              <div class="roadmap-item">
+                <span class="phase">Phase 2</span>
+                <p><strong>다크모드 토글:</strong> 라이트/다크 테마 전환 기능</p>
+              </div>
+              <div class="roadmap-item">
+                <span class="phase">Phase 3</span>
+                <p><strong>인터랙티브 프로젝트:</strong> 데이터 시각화, 애니메이션 통합</p>
+              </div>
+              <div class="roadmap-item">
+                <span class="phase">Phase 4</span>
+                <p><strong>커뮤니티 기능:</strong> 댓글 시스템, 소셜 미디어 연동</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 결론 -->
+          <section class="post-section">
+            <h3>✨ 마치며</h3>
+            <div class="conclusion-box">
+              <p>
+                이번 개선 과정은 단순한 코드 리팩토링이 아니었다. 
+                그것은 <strong>웹 창작의 자유도를 되찾고, 
+                멀티미디어라는 새로운 표현 도구를 활용</strong>하며, 
+                <strong>포트폴리오를 통해 자신의 철학을 드러내는 작업</strong>이었다.
+              </p>
+              <p>
+                앞으로 이 블로그는 단순한 정보 전달의 매체를 넘어, 
+                <strong>시각, 청각, 그리고 사고의 영역이 만나는 공간</strong>이 될 것이다.
+              </p>
+              <p style="margin-top: 1.5em; font-style: italic;">
+                "Memento mori, Memento te hominem esse, Respice post te, hominem te esse memento"
+              </p>
+            </div>
+          </section>
+        </div>
+
+        <footer class="post-footer">
+          <div class="post-tags">
+            <span class="tag">#웹개발</span>
+            <span class="tag">#리팩토링</span>
+            <span class="tag">#포트폴리오</span>
+            <span class="tag">#멀티미디어</span>
+            <span class="tag">#블로그</span>
+          </div>
+        </footer>
+      </article>
+    </section>
+  </div>
+
+  <!-- 푸터 -->
+  <footer class="copyright">
     <h2 class="tagline">Memento mori, Memento te hominem esse, Respice post te, hominem te esse memento</h2>
     <div class="copyright-info">
-        &copy; <span class="copyright-year"></span> Unorthodox-oddball - All Rights Reserved.<br>
-        Last Updated: <span class="last-updated"></span>
+      &copy; <span class="copyright-year"></span> Unorthodox-oddball - All Rights Reserved.<br>
+      Last Updated: <span class="last-updated"></span>
     </div>
-</footer>
+  </footer>
 
-<script>
+  <!-- 인라인 스크립트 -->
+  <script>
     const currentYear = new Date().getFullYear();
     const startYear = 2023;
     let copyrightText = "";
 
     if (currentYear === startYear) {
-        copyrightText = startYear;
+      copyrightText = startYear;
     } else {
-        copyrightText = startYear + " - " + currentYear;
+      copyrightText = startYear + " - " + currentYear;
     }
 
     document.querySelector(".copyright-year").textContent = copyrightText;
 
     const lastUpdated = new Date(document.lastModified).toLocaleDateString();
     document.querySelector(".last-updated").textContent = lastUpdated;
-</script>
+  </script>
 </body>
 </html>
