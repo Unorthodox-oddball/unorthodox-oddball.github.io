@@ -1,63 +1,40 @@
 <!DOCTYPE html>
-<html lang="ko-KR">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Testing...</title>
-  <link rel="stylesheet" type="text/css" href="Stylesheet.css">
-  <script src="test.js"></script>
+  <meta name="description" content="Unorthodox-oddball의 개인적인 글과 웹 실험을 모아 둔 공간입니다.">
+  <title>Unorthodox-oddball</title>
+  <link rel="stylesheet" href="Stylesheet.css">
 </head>
 <body>
-  <h1>Testing...</h1>
-  <audio id="myAudio" loop>
-    <source src="Hong Nan-pa (composition and performance)-Sorrow's_Joseon-Columbia Records.mp3" type="audio/mpeg">
-  </audio>
-<section>
-<article>
-    <img src="test.gif" alt="Example GIF">
-    <h2>Paradox of voting</h2>
-    <p>Voter turnout reached an all-time high in the 2020 U.S. presidential election, with more than 159 million Americans voting, but the voting paradox suggests for many that the expected benefits of voting may not have exceeded costs, and it is essential to consider the broader context of democratic participation and the role of individual voters to better understand it.</p>
-    <a href="test.html">Read more</a>
+  <header class="site-header">
+    <p class="eyebrow">UNORTHODOX-ODDBALL</p>
+    <h1>Notes &amp; Experiments</h1>
+    <p class="intro">생각을 정리하고, 글을 쓰고, 작은 웹 실험을 기록합니다.</p>
+  </header>
 
-  </article>
-	 
-  <article>
-    <img src="00001-321918068.gif" alt="Example GIF">
-    <a href="#">Read more</a>
-  </article>
-	 
-  <article>
-    <img src="test.gif" alt="Example GIF">
-    <h2>Article 3</h2>
-    <p>This is an example article that demonstrates the power of HTML and CSS. Notice how the text is justified and the GIF is centered and resized to fit the container.</p>
-    <a href="test2.html">Read more</a>
-  </article>
+  <main>
+    <section class="article-list" aria-label="글 목록">
+      <article class="article-card">
+        <img src="test.gif" alt="투표의 역설을 상징하는 이미지">
+        <div class="article-card-content">
+          <p class="article-meta">ESSAY · POLITICS</p>
+          <h2>Paradox of Voting</h2>
+          <p>투표에 드는 비용과 한 표가 가져올 것으로 기대되는 효용 사이의 긴장을 살펴보고, 개인의 정치 참여가 갖는 의미를 생각해 봅니다.</p>
+          <a class="read-more" href="test.html">글 읽기 <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </section>
+  </main>
 
-  </section>
-  	
-<footer class="copyright">
-    <h2 class="tagline">Memento mori, Memento te hominem esse, Respice post te, hominem te esse memento</h2>
-    <div class="copyright-info">
-        &copy; <span class="copyright-year"></span> Unorthodox-oddball - All Rights Reserved.<br>
-        Last Updated: <span class="last-updated"></span>
-    </div>
-</footer>
+  <footer class="site-footer">
+    <p class="tagline">Memento mori, Memento te hominem esse</p>
+    <p>&copy; 2023–<span id="current-year"></span> Unorthodox-oddball</p>
+  </footer>
 
-<script>
-    const currentYear = new Date().getFullYear();
-    const startYear = 2023;
-    let copyrightText = "";
-
-    if (currentYear === startYear) {
-        copyrightText = startYear;
-    } else {
-        copyrightText = startYear + " - " + currentYear;
-    }
-
-    document.querySelector(".copyright-year").textContent = copyrightText;
-
-    const lastUpdated = new Date(document.lastModified).toLocaleDateString();
-    document.querySelector(".last-updated").textContent = lastUpdated;
-</script>
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
