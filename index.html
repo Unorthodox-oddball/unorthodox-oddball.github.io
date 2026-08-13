@@ -3,38 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Unorthodox-oddball의 개인적인 글과 웹 실험을 모아 둔 공간입니다.">
+  <meta name="description" content="Unorthodox-oddball의 글과 멀티미디어 아카이브.">
   <title>Unorthodox-oddball</title>
   <link rel="stylesheet" href="Stylesheet.css">
 </head>
 <body>
   <header class="site-header">
+    <nav class="site-nav" aria-label="주요 메뉴">
+      <a href="index.html">홈</a>
+      <a href="lab.html">실험실</a>
+    </nav>
     <p class="eyebrow">UNORTHODOX-ODDBALL</p>
-    <h1>Notes &amp; Experiments</h1>
-    <p class="intro">생각을 정리하고, 글을 쓰고, 작은 웹 실험을 기록합니다.</p>
+    <h1>Notes &amp; Media</h1>
+    <p class="intro">생각을 글로 남기고, 이미지와 소리로 그 주변의 분위기를 기록합니다.</p>
   </header>
-
   <main>
     <section class="article-list" aria-label="글 목록">
       <article class="article-card">
         <img src="test.gif" alt="투표의 역설을 상징하는 이미지">
         <div class="article-card-content">
           <p class="article-meta">ESSAY · POLITICS</p>
-          <h2>Paradox of Voting</h2>
-          <p>투표에 드는 비용과 한 표가 가져올 것으로 기대되는 효용 사이의 긴장을 살펴보고, 개인의 정치 참여가 갖는 의미를 생각해 봅니다.</p>
-          <a class="read-more" href="test.html">글 읽기 <span aria-hidden="true">→</span></a>
+          <h2>투표의 역설</h2>
+          <p>투표에 드는 개인의 비용과 민주주의에서 한 표가 갖는 의미 사이의 긴장을 살펴봅니다.</p>
+          <a class="read-more" href="voting-paradox.html">글 읽기 <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+      <article class="article-card">
+        <img src="00001-321918068.gif" alt="새로운 사이트 개편을 상징하는 애니메이션">
+        <div class="article-card-content">
+          <p class="article-meta">NOTE · SITE</p>
+          <h2>다시 쓰는 공간</h2>
+          <p>블로그를 다시 정리하고, 글과 멀티미디어가 자연스럽게 함께하는 공간으로 바꾼 기록입니다.</p>
+          <a class="read-more" href="site-renewal.html">글 읽기 <span aria-hidden="true">→</span></a>
         </div>
       </article>
     </section>
   </main>
-
   <footer class="site-footer">
     <p class="tagline">Memento mori, Memento te hominem esse</p>
     <p>&copy; 2023–<span id="current-year"></span> Unorthodox-oddball</p>
   </footer>
-
-  <script>
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
